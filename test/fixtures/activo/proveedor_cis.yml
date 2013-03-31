@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nit: MyString
+  nombre_comercial: MyString
+  sigla: MyString
+  tipo_proveedor_id: MyString
+  direccion: MyString
+  telefono_convencional: MyString
+  telefono_celular: MyString
+  telefono_fax: MyString
+  pagina_web: MyString
+  url_logo: MyString
+  fecha_inicio_vigencia: 2012-10-08
+  fecha_fin_vigencia: 2012-10-08
+
+two:
+  nit: MyString
+  nombre_comercial: MyString
+  sigla: MyString
+  tipo_proveedor_id: MyString
+  direccion: MyString
+  telefono_convencional: MyString
+  telefono_celular: MyString
+  telefono_fax: MyString
+  pagina_web: MyString
+  url_logo: MyString
+  fecha_inicio_vigencia: 2012-10-08
+  fecha_fin_vigencia: 2012-10-08

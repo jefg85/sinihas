@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  descripcion_corta: MyString
+  descripcion_larga: MyString
+  prefijo_nombramiento: MyString
+  nivel_i_id: 1
+  nivel_ii_id: 1
+  nivel_iii_id: 1
+  url_imagen: MyString
+  posicion: 1
+  fecha_inicio_vigencia: 2012-10-08
+  fecha_fin_vigencia: 2012-10-08
+
+two:
+  descripcion_corta: MyString
+  descripcion_larga: MyString
+  prefijo_nombramiento: MyString
+  nivel_i_id: 1
+  nivel_ii_id: 1
+  nivel_iii_id: 1
+  url_imagen: MyString
+  posicion: 1
+  fecha_inicio_vigencia: 2012-10-08
+  fecha_fin_vigencia: 2012-10-08

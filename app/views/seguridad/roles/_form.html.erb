@@ -1,0 +1,11 @@
+<table class="form-table">
+	<tr>
+		<td style="width:10%"><%= f.label :nombre,"Nombre:" %></td>
+		<td style="width:40%"><%= f.text_field :nombre %></td>
+		<%if !@seguridad_role.new_record?%>
+		<td style="width:10%"><%= f.label :activo,"Activo:" %></td>
+		<td style="width:40%"><%= f.check_box :activo %></td>
+		<%end%>
+	</tr>
+</table>
+

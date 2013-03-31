@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  categoria_servicio_id: 1
+  nombre_servicio: MyString
+  descripcion_servicio: MyString
+  servicio_padre_id: 1
+  costo_asociado: 9.99
+  ci_id: 1
+  imagen: MyString
+  estado_id: 1
+
+two:
+  categoria_servicio_id: 1
+  nombre_servicio: MyString
+  descripcion_servicio: MyString
+  servicio_padre_id: 1
+  costo_asociado: 9.99
+  ci_id: 1
+  imagen: MyString
+  estado_id: 1

@@ -1,0 +1,36 @@
+ <%= form_for(@seguridad_rol_menu, :validate => true) do |f| %>
+ <%= f.hidden_field :rol_id %>
+ <div class="content-box"> 	
+      	<div class="content-header">
+        <h3>
+        <div class="title-box">
+               Agregar Menu
+        </div>  
+        <div class="btns-box">      
+          <%= f.submit "Guardar" %>      
+        </div>
+        </h3>
+        </div>
+        <div class="content">   
+            <table class="form-table">
+              <tr>
+                <td><%= f.label :menu_id,"Opción:" %></td>
+                <td colspan="3"><%= f.collection_select :menu_id, @seguridad_menus, :id, :nombre,  {:include_blank => true}  %></td>
+              </tr>
+              <tr>
+                <td ><%= f.label :crear,"Agregar:" %></td>
+                <td ><%= f.check_box :crear %></td>
+                <td ><%= f.label :actualizar,"Editar:" %></td>
+                <td ><%= f.check_box :actualizar %></td>
+              </tr>
+              <tr>
+                <td ><%= f.label :ver,"Ver:" %></td>
+                <td ><%= f.check_box :ver %></td>
+                <td ><%= f.label :borrar,"Borrar:" %></td>
+                <td ><%= f.check_box :borrar %></td>
+              </tr>
+            </table>
+       </div>
+</div>     
+<% end %>  
+

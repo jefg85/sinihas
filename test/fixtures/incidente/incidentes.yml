@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  fecha_incidente: 2012-10-08
+  fecha_informe: 2012-10-08
+  modo_id: 1
+  resumen: MyString
+  descripcion: MyString
+  ci_id: 1
+  direccion_division: MyString
+  departamento_oficina: MyString
+  seccion_unidad: MyString
+  grupo_id: 1
+  prioridad_id: 1
+  impacto_id: 1
+  informado_por: 1
+  tipo_incidente_id: 1
+  resolucion: MyString
+  estado_id: 1
+  fecha_registro: 2012-10-08
+
+two:
+  fecha_incidente: 2012-10-08
+  fecha_informe: 2012-10-08
+  modo_id: 1
+  resumen: MyString
+  descripcion: MyString
+  ci_id: 1
+  direccion_division: MyString
+  departamento_oficina: MyString
+  seccion_unidad: MyString
+  grupo_id: 1
+  prioridad_id: 1
+  impacto_id: 1
+  informado_por: 1
+  tipo_incidente_id: 1
+  resolucion: MyString
+  estado_id: 1
+  fecha_registro: 2012-10-08

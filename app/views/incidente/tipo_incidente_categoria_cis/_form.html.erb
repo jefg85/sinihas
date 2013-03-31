@@ -1,0 +1,16 @@
+ <table class="form-table">
+    <tr>
+      <td><%= f.label :categoria_ci_id,"Categoría:" %></td>
+      <td><%= f.collection_select :categoria_ci_id, @categorias, :id, :descripcion_corta,  {:include_blank => true}  %></td>
+      <td><%= f.label :estado_id ,"Estado:"%></td>      
+      <td><%= f.collection_select :estado_id, @catalogo_estado, :id, :nombre,  {:include_blank => true}  %></td>       
+    </tr>
+    <tr>
+      <td><%= f.label :descripcion_corta ,"Descripción corta:"%></td>
+      <td colspan="3"><%= f.text_field :descripcion_corta,:style=>"width:98%" %></td>
+    </tr> 
+    <tr>
+      <td><%= f.label :descripcion_larga,"Descripción Larga:" %></td>
+      <td colspan="3"><%= f.text_field :descripcion_larga,:style=>"width:98%" %></td>      
+    </tr>    
+  </table> 

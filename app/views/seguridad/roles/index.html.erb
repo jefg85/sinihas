@@ -1,0 +1,40 @@
+<div>
+
+      <div class="content-box">
+      	<div class="content-header">
+        <h3>
+        <div class="title-box">
+               Lista de Roles  
+        </div>  
+        <div class="btns-box">
+          <button onclick="window.location='/seguridad/roles/new'">
+                  Agregar
+                </button>      
+        </div></h3>
+        </div>
+        <div class="content">         
+           <table class="tablesorter" cellspacing="0" id="table">
+            <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Activo</th>
+            <th>Acciones</th>            
+          </tr>
+        </thead>
+        <tbody>
+          <% @seguridad_roles.each do |seguridad_role| %>
+          <tr  class="<%= cycle("even", "odd") %>">
+            <td><%= seguridad_role.nombre %></td>
+            <td><%= seguridad_role.activo ? 'SI' : 'NO' %></td>            
+            <td >
+            <%= link_to 'Editar', edit_seguridad_role_path(seguridad_role) %> |
+            <%= link_to 'Borrar', seguridad_role, method: :delete, data: { confirm: 'Seguro de eliminar ?' } %></td>
+          </tr>
+          <% end %>
+          </tbody>
+          </table>          
+          <%= paginate @seguridad_roles %>
+        </div>
+      </div>  
+      
+</div>

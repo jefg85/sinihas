@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nombre_peticion_ti: MyString
+  descripcion: MyString
+  usuario_ti_id: 1
+  direccion_division_id: 1
+  departamento_oficina_id: 1
+  seccion_unidad_id: 1
+  tipo_peticion_id: 1
+  prioridad_id: 1
+  motivo_cancelacion: MyString
+  estado_id: 1
+
+two:
+  nombre_peticion_ti: MyString
+  descripcion: MyString
+  usuario_ti_id: 1
+  direccion_division_id: 1
+  departamento_oficina_id: 1
+  seccion_unidad_id: 1
+  tipo_peticion_id: 1
+  prioridad_id: 1
+  motivo_cancelacion: MyString
+  estado_id: 1

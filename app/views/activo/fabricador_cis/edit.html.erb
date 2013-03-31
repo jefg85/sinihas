@@ -1,0 +1,68 @@
+<div>
+  <div class="content-box">
+  	<%= form_for(@activo_fabricador_ci, :validate => true) do |f| %>
+    <div class="content-header"><h3>
+    <div class="title-box">
+           Editar Fabricador
+    </div>  
+    <div class="btns-box">  
+    	<%= f.submit "Guardar" %>
+		 | <%= link_to 'Eliminar', @activo_fabricador_ci, method: :delete, data: { confirm: 'Seguro de eliminar?' } %>
+    </div></h3></div>
+     	<%= render :partial => "form", :locals => { :f => f } %>
+     	<% end %>
+     	<div class="content-box">
+        <div class="content-header"><h3>
+        <div class="title-box">
+               Lista de Categorías 
+        </div>  
+        <div class="btns-box">
+          		<button onClick="fnAgregar();">Agregar</button>      
+        </div></h3></div>
+        <div class="content">
+          <table class="table" cellspacing="0" id="table" >    
+		<thead>	
+			  <tr>
+			    <th>Descripcion corta</th>			    
+			    <th>Fecha inicio vigencia</th>
+			    <th>Fecha fin vigencia</th>
+			    <th>Acciones</th>			    
+			  </tr>
+			</thead>
+			<tbody>
+			<% @activo_categoria_cis.each do |activo_categoria_ci| %>
+			  <tr  class="<%= cycle("even", "odd") %>">
+			    <td><%= activo_categoria_ci.descripcion_corta %></td>			    
+			    <td><%= activo_categoria_ci.fecha_inicio_vigencia.strftime("%d/%m/%Y") %></td>
+			    <td><%= activo_categoria_ci.fecha_fin_vigencia.strftime("%d/%m/%Y") %></td>			   
+			    <td><a onClick="fnQuitar('<%= activo_categoria_ci.id %>');">Quitar</a></td>
+			  </tr>
+			<% end %>
+		</tbody>
+			</table>
+
+        </div>
+      </div>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+
+function fnAgregar(){
+  $.colorbox({href:"/fabricador_cis/agregarcategoria?id=<%= @activo_fabricador_ci.id %>",width:"70%",height:"70%"});
+
+}
+
+
+function fnQuitar(id){
+
+   jConfirm('¿ Seguro de eliminar ?', 'Confirmación', function(result) {       
+        if(result){       
+         window.location = "/fabricador_cis/quitarcategoria?categoria_id="+id+"&id=<%= @activo_fabricador_ci.id %>" ;
+          }           
+    });
+}
+
+
+</script>

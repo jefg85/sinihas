@@ -1,0 +1,34 @@
+<div>
+      <div class="content-box">
+        <h3>
+        <div class="title-box">
+              Detalle Catálogos  
+        </div>  
+        <div class="btns-box">
+          <button onclick="window.location='/seguridad/usuarios/new'">
+                  Agregar
+                </button>      
+        </div></h3>
+        <div class="content">
+          <table class="table">
+			  <tr>			    
+			    <th>Nombre</th>
+			    <th>Descripción</th>
+			    <th>Orden</th>
+			    <th>Activo</th>
+			    <th>Acciones</th>			    
+			  </tr>			
+			<% @catalogo_catalogos.each do |catalogo_catalogo| %>
+			  <tr  class="<%= cycle("even", "odd") %>">  
+			    <td><%= catalogo_catalogo.nombre %></td>
+			    <td><%= catalogo_catalogo.descripcion %></td>
+			    <td><%= catalogo_catalogo.orden %></td>
+			    <td><%= catalogo_catalogo.activo %></td>			    
+			    <td><%= link_to 'Editar', edit_catalogo_catalogo_path(catalogo_catalogo) %> |
+			    <%= link_to 'Borrar', catalogo_catalogo, method: :delete, data: { confirm: 'seguro de eliminar?' } %></td>
+			  </tr>
+			<% end %>
+			</table>
+        </div>
+      </div>
+</div>

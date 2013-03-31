@@ -1,0 +1,31 @@
+<h1>Listing activo_relacion_cis</h1>
+
+<table>
+  <tr>
+    <th>Ci</th>
+    <th>Relacion</th>
+    <th>Ci relacion</th>
+    <th>Fecha</th>
+    <th>Estado</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @activo_relacion_cis.each do |activo_relacion_ci| %>
+  <tr  class="<%= cycle("even", "odd") %>">
+    <td><%= activo_relacion_ci.ci_id %></td>
+    <td><%= activo_relacion_ci.relacion_id %></td>
+    <td><%= activo_relacion_ci.ci_relacion_id %></td>
+    <td><%= activo_relacion_ci.fecha %></td>
+    <td><%= activo_relacion_ci.estado_id %></td>
+    <td><%= link_to 'Show', activo_relacion_ci %></td>
+    <td><%= link_to 'Edit', edit_activo_relacion_ci_path(activo_relacion_ci) %></td>
+    <td><%= link_to 'Destroy', activo_relacion_ci, method: :delete, data: { confirm: 'seguro de eliminar?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Relacion ci', new_activo_relacion_ci_path %>

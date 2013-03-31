@@ -1,0 +1,28 @@
+<table class="form-table">
+	<tr>
+		<td><%= f.label :nombre,"Nombre:" %></td>
+		<td><%= f.text_field :nombre %></td>
+		<td><%= f.label :descripcion,"Descripción:" %></td>
+		<td><%= f.text_field :descripcion %></td>
+	</tr>
+	<tr>		
+		<td><%= f.label :fecha_inicio_vigencia,"Fecha Inicio Vigencia:" %></td>
+		<td><%= f.text_field :fecha_inicio_vigencia %></td>
+		<td><%= f.label :fecha_fin_vigencia,"Fecha Fin Vigencia:" %></td>
+		<td><%= f.text_field :fecha_fin_vigencia %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :color,"Color:" %></td>
+		<td><%= f.text_field :color %></td>
+		<td></td>
+		<td></td>
+	</tr>
+</table>
+ <script>
+    $(function() {
+        $( "#activo_estado_ci_fecha_inicio_vigencia" ).datepicker();
+        $( "#activo_estado_ci_fecha_fin_vigencia" ).datepicker();
+         $("#activo_estado_ci_color").colorpicker();
+    });
+    </script>
+

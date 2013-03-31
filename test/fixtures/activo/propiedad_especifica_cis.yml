@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nombre_campo: MyString
+  tipo_campo: 1
+  valor_string: MyString
+  visualizar: false
+  fecha_inicio_vigencia: 2012-10-08
+  fecha_fin_vigencia: 2012-10-08
+
+two:
+  nombre_campo: MyString
+  tipo_campo: 1
+  valor_string: MyString
+  visualizar: false
+  fecha_inicio_vigencia: 2012-10-08
+  fecha_fin_vigencia: 2012-10-08

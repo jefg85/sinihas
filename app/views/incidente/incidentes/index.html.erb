@@ -1,0 +1,41 @@
+<div>
+      <div class="content-box">
+        <div class="content-header">
+        <h3>
+        <div class="title-box">
+              Incidentes 
+        </div>  
+        <div class="btns-box">
+          <button onclick="window.location='/incidente/incidentes/new'">
+                  Agregar
+                </button>      
+        </div></h3>
+        </div>
+        <div class="content">
+          <table class="table" cellspacing="0" id="table" >    
+		<thead>	  
+  <tr>
+    <th>Fecha incidente</th>
+    <th>Resumen</th>
+    <th>Tipo incidente</th>    
+    <th>Estado</th>    
+    <th>Acciones</th>    
+  </tr>
+</thead>
+<tbody>
+<% @incidente_incidentes.each do |incidente_incidente| %>
+  <tr  class="<%= cycle("even", "odd") %>">  
+    <td><%= incidente_incidente.fecha_incidente.strftime("%d/%m/%Y") %></td>
+    <td><%= incidente_incidente.resumen %></td>   
+    <td><%= incidente_incidente.tipo.descripcion_corta %></td>   
+    <td><%= incidente_incidente.estado.nombre %></td>
+    <td><%= link_to 'Editar', edit_incidente_incidente_path(incidente_incidente) %> |
+    <%= link_to 'Borrar', incidente_incidente, method: :delete, data: { confirm: 'Seguro de eliminar?' } %></td>
+  </tr>
+<% end %>
+</tbody>
+</table>
+
+        </div>
+      </div>
+</div>

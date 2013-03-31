@@ -1,0 +1,40 @@
+<table class="form-table">
+	
+	<tr>
+		<td><%= f.label :descripcion_corta,"Descripción Corta:" %></td>
+		<td><%= f.text_field :descripcion_corta %></td>
+		<td><%= f.label :tipo,"Tipo:" %></td>
+		<td>
+			<%= f.select( "tipo", { "Categoría General" => "1", "SubCategoría" => "2", "SubSubCategoría" => "3"}) %>
+		</td>
+	</tr>
+	<tr>
+		<td><%= f.label :descripcion_larga,"Descripción Larga:" %></td>
+		<td colspan="3"><%= f.text_field :descripcion_larga,:style=>"width:96%" %></td>
+	</tr>
+	<tr>		
+		<td><%= f.label :fecha_inicio_vigencia,"Fecha Inicio de Vigencia:" %></td>
+		<td><%= f.text_field :fecha_inicio_vigencia,:readonly=>true %></td>
+		<td><%= f.label :fecha_fin_vigencia,"Fecha Fin de Vigencia:" %></td>
+		<td><%= f.text_field :fecha_fin_vigencia,:readonly=>true %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :prefijo_nombramiento,"Prefijo nombramiento:" %></td>
+		<td><%= f.text_field :prefijo_nombramiento %></td>
+		<td><%= f.label :posicion,"Posición:" %></td>
+		<td><%= f.text_field :posicion %></td>
+	</tr>
+	<tr>		
+		<td><%= f.label :nivel_i_id,"Categoría Padre:" %></td>
+		<td><%= f.collection_select :nivel_i_id, @nivel, :id, :descripcion_corta,  {:include_blank => true}  %></td>
+		<td></td>
+		<td></td>
+	</tr>
+</table> 
+<script>
+    $(function() {
+        $( "#activo_categoria_ci_fecha_inicio_vigencia" ).datepicker();
+        $( "#activo_categoria_ci_fecha_fin_vigencia" ).datepicker();
+    });
+    </script>
+

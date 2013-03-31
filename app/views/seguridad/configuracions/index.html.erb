@@ -1,0 +1,33 @@
+<div>
+
+      <div class="content-box">
+        <div class="content-header">
+        <h3>
+        <div class="title-box">
+               Configuraciones
+        </div>  
+        </h3>
+        </div>
+        <div class="content">    
+<table>
+  <thead>
+  <tr>
+    <th>Código</th>
+    <th>Nombre</th>
+    <th>Valor</th>
+    <th>Acciones</th>    
+  </tr>
+</thead>
+<% @seguridad_configuracions.each do |seguridad_configuracion| %>
+  <tr>
+    <td><%= seguridad_configuracion.codigo %></td>
+    <td><%= seguridad_configuracion.nombre %></td>
+    <td><%= seguridad_configuracion.valor %></td>    
+    <td><%= link_to 'Edit', edit_seguridad_configuracion_path(seguridad_configuracion) %></td>    
+  </tr>
+<% end %>
+</table>
+</div>
+      </div>  
+      
+</div>

@@ -1,0 +1,37 @@
+<div>
+      <div class="content-box">
+        <div class="content-header"><h3>
+        <div class="title-box">
+               Ciclos de Vida 
+        </div>  
+        <div class="btns-box">
+          <button onclick="window.location='/seguridad/usuarios/new'">
+                  Agregar
+                </button>      
+        </div></h3></div>
+        <div class="content">
+          <table class="table">			 
+			  <tr>
+			    <th>Ci</th>
+			    <th>Operacion</th>
+			    <th>Estado categoria ci</th>
+			    <th>Fecha</th>			    
+			    <th>Orden</th>
+			    <th>Acciones</th>			    
+			  </tr>
+			
+			<% @activo_ciclo_vidas.each do |activo_ciclo_vida| %>
+			  <tr  class="<%= cycle("even", "odd") %>">
+			    <td><%= activo_ciclo_vida.ci_id %></td>
+			    <td><%= activo_ciclo_vida.operacion %></td>
+			    <td><%= activo_ciclo_vida.estado_categoria.estado.nombre %></td>
+			    <td><%= activo_ciclo_vida.fecha %></td>			    
+			    <td><%= link_to 'Editar', edit_activo_ciclo_vida_path(activo_ciclo_vida) %> |
+			    <%= link_to 'Borrar', activo_ciclo_vida, method: :delete, data: { confirm: 'seguro de eliminar?' } %></td>
+			  </tr>
+			<% end %>
+			</table>
+
+        </div>
+      </div>
+</div>

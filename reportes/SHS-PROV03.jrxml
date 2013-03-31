@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="lista_ci" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="625e6d2e-1606-4e7e-b72c-add519ebd2cf">
+	<property name="ireport.zoom" value="1.1000000000000003"/>
+	<property name="ireport.x" value="20"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT c.*,p.nombre_comercial as proveedor, f.nombre_comercial as fabricador
+FROM activo_cis c
+left join  activo_proveedor_cis p on p.id = c.proveedor_id
+left join activo_fabricador_cis f on f.id =c.fabricador_id]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="descripcion" class="java.lang.String"/>
+	<field name="codigo_inventario" class="java.lang.String"/>
+	<field name="numero_serial" class="java.lang.String"/>
+	<field name="numero_parte" class="java.lang.Integer"/>
+	<field name="soporte" class="java.lang.Boolean"/>
+	<field name="impacto_id" class="java.lang.Integer"/>
+	<field name="urgencia_id" class="java.lang.Integer"/>
+	<field name="prioridad_id" class="java.lang.Integer"/>
+	<field name="usuarios_afectados" class="java.lang.String"/>
+	<field name="informacion_adicional" class="java.lang.String"/>
+	<field name="categoria_nivel_i_id" class="java.lang.Integer"/>
+	<field name="categoria_nivel_ii_id" class="java.lang.Integer"/>
+	<field name="categoria_nivel_iii" class="java.lang.Integer"/>
+	<field name="nombre_producto" class="java.lang.String"/>
+	<field name="modelo_version" class="java.lang.String"/>
+	<field name="fabricador_id" class="java.lang.Integer"/>
+	<field name="proveedor_id" class="java.lang.Integer"/>
+	<field name="direccion_division_id" class="java.lang.Integer"/>
+	<field name="departamento_oficina_id" class="java.lang.Integer"/>
+	<field name="seccion_unidad_id" class="java.lang.Integer"/>
+	<field name="edificio_id" class="java.lang.Integer"/>
+	<field name="proveedor" class="java.lang.String"/>
+	<field name="fabricador" class="java.lang.String"/>
+	<title>
+		<band height="68" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="1cdb02c4-a556-4965-997a-80ff95cf0e91" x="652" y="6" width="100" height="19"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SHS-PROV03]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1cdb02c4-a556-4965-997a-80ff95cf0e91" x="0" y="6" width="297" height="19"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INSTITUTO NICARAGUENSE DE ENERGIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1cdb02c4-a556-4965-997a-80ff95cf0e91" x="2" y="31" width="295" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Lista de elementos de configuración (CI)]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="52dd7e6a-f82b-4f4f-a8d7-7334378e65d0" x="89" y="0" width="208" height="20"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="63c2b64c-7306-41fb-a6a0-935b44c971c1" x="0" y="0" width="89" height="20"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Código]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="16196a61-03bc-4419-ae10-e4947500715e" x="299" y="0" width="100" height="20"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Número Serial]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="968f1e80-47ed-4268-bbee-73fcacfb33d6" x="400" y="0" width="100" height="20"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Número Parte]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a0b4f35e-f7d7-421e-a8b5-9c66124fd0f8" x="500" y="0" width="131" height="20"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fabricador]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="07ce22a6-2713-4c92-b227-b453bfd475d1" x="632" y="0" width="121" height="20"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Proveedor]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement uuid="63c34a05-9e8b-4fc3-9b92-d76b2699d093" x="99" y="0" width="198" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="48198985-41bd-41a2-bd90-aeb7e3bcd3ac" x="2" y="0" width="87" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{codigo_inventario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f5832bd5-6689-48f3-8e33-4714be0e8cc2" x="311" y="4" width="89" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{numero_serial}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8dbebc33-50bf-441c-942a-e610e89298bd" x="412" y="3" width="88" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{numero_parte}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1194aeaf-212e-4e1d-83fc-44ed40e0931a" x="513" y="4" width="118" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fabricador}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b79128c9-09a1-4353-9b15-c68a4ea6fef3" x="643" y="4" width="110" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{proveedor}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<lastPageFooter>
+		<band height="38">
+			<textField>
+				<reportElement uuid="9774dca6-43c8-48bf-bb60-db8438119e2d" x="259" y="14" width="80" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="df2f6dd0-b666-4ee5-84cf-45fe43e96443" x="339" y="14" width="40" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="ef33f564-7bbc-491d-9d56-ca4e1f04ecd1" x="71" y="16" width="72" height="20"/>
+				<textElement/>
+				<text><![CDATA[Módulo: Activo]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement uuid="c8fea89a-b2e5-4c39-9b28-2bf231a75986" x="643" y="14" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="ef33f564-7bbc-491d-9d56-ca4e1f04ecd1" x="-3" y="16" width="58" height="20"/>
+				<textElement/>
+				<text><![CDATA[Versión 1.0]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="06cc3786-9d22-474e-8dd6-915ca150f6ec" x="543" y="14" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Fecha de Impresión:]]></text>
+			</staticText>
+		</band>
+	</lastPageFooter>
+</jasperReport>

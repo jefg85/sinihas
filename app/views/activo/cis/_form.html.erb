@@ -1,0 +1,69 @@
+<table class="form-table">
+	<tr>
+		<td><%= f.label :nombre,"Nombre:" %></td>
+		<td><%= f.text_field :nombre,:style=>'width:87%' %></td>
+		<td><%= f.label :descripcion,"Descripción:" %></td>
+		<td><%= f.text_field :descripcion,:style=>'width:87%' %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :codigo_inventario,"Código Inventario:" %></td>
+		<td><%= f.text_field :codigo_inventario,:style=>'width:87%' %></td>
+		<td><%= f.label :numero_serial,"Num Serial:" %></td>
+		<td><%= f.text_field :numero_serial,:style=>'width:87%' %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :numero_parte,"Num Parte:" %></td>
+		<td><%= f.text_field :numero_parte,:style=>'width:87%'%></td>
+		<td><%= f.label :impacto_id,"Impacto:" %></td>
+		<td><%= f.collection_select :impacto_id, @impacto_id, :id, :nombre,  {:include_blank => true}  %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :urgencia_id,"Urgencia:" %></td>
+		<td><%= f.collection_select :urgencia_id, @urgencia_id, :id, :nombre,  {:include_blank => true}  %></td>
+		<td><%= f.label :prioridad_id,"Prioridad:" %></td>
+		<td><%= f.collection_select :prioridad_id, @prioridad_id, :id, :nombre,  {:include_blank => true}  %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :usuarios_afectados,"Usuarios Afectados:" %></td>
+		<td><%= f.text_field :usuarios_afectados,:style=>'width:87%' %></td>
+		<td><%= f.label :informacion_adicional,"Información Adicional:" %></td>
+		<td><%= f.text_field :informacion_adicional,:style=>'width:87%' %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :categoria_nivel_i_id,"Nivel I:" %></td>
+		<td><%= f.collection_select :categoria_nivel_i_id, @categoria_nivel_i_id, :id, :descripcion_corta,  {:include_blank => true}  %></td>
+		<td><%= f.label :categoria_nivel_ii_id,"Nivel II:" %></td>
+		<td><%= f.collection_select :categoria_nivel_ii_id, @categoria_nivel_ii_id, :id, :descripcion_corta,  {:include_blank => true}  %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :categoria_nivel_iii,"Nivel III:" %></td>
+		<td><%= f.collection_select :categoria_nivel_iii, @categoria_nivel_iii, :id, :descripcion_corta,  {:include_blank => true}  %></td>
+		<td><%= f.label :nombre_producto,"Nombre Producto:" %></td>
+		<td><%= f.text_field :nombre_producto,:style=>'width:87%' %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :modelo_version,"Modelo Versión:" %></td>
+		<td><%= f.text_field :modelo_version ,:style=>'width:87%'%></td>
+		<td><%= f.label :fabricador_id,"Fabricador:" %></td>
+		<td><%= f.collection_select :fabricador_id, @fabricador_id, :id, :nombre_comercial,  {:include_blank => true}  %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :proveedor_id,"Proveedor:" %></td>
+		<td><%= f.collection_select :proveedor_id, @proveedor_id, :id, :nombre_comercial,  {:include_blank => true}  %></td>
+		<td><%= f.label :direccion_division_id,"División:" %></td>
+		<td><%= f.collection_select :direccion_division_id, @direccion_division_id, :id, :nombre,  {:include_blank => true}  %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :departamento_oficina_id,"Oficina:" %></td>
+		<td><%= f.collection_select :departamento_oficina_id, @departamento_oficina_id, :id, :nombre,  {:include_blank => true}  %></td>
+		<td><%= f.label :seccion_unidad_id,"Sección:" %></td>
+		<td><%= f.collection_select :seccion_unidad_id, @seccion_unidad_id, :id, :nombre,  {:include_blank => true}  %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :edificio_id,"Edificio:" %></td>
+		<td><%= f.collection_select :edificio_id, @edificio_id, :id, :nombre,  {:include_blank => true}  %></td>
+		<td></td>
+		<td></td>
+	</tr>
+</table>
+

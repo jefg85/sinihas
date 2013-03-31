@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  tipo_informacion_trabajo_id: 1
+  fecha: 2012-10-08
+  fuente_id: 1
+  resumen: MyString
+  documento_adjunto: MyString
+
+two:
+  tipo_informacion_trabajo_id: 1
+  fecha: 2012-10-08
+  fuente_id: 1
+  resumen: MyString
+  documento_adjunto: MyString

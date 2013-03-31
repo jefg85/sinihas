@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  categoria_ci_id: 1
+  descripcion_corta: MyString
+  descripcion_larga: MyString
+  estado_id: 1
+
+two:
+  categoria_ci_id: 1
+  descripcion_corta: MyString
+  descripcion_larga: MyString
+  estado_id: 1

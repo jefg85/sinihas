@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  ci_id: 1
+  operacion: MyString
+  estado_categoria_ci_id: 1
+  responsable_id: 1
+  fecha: 2012-10-08
+  observaciones: MyString
+  orden: 1
+  estado_id: 1
+
+two:
+  ci_id: 1
+  operacion: MyString
+  estado_categoria_ci_id: 1
+  responsable_id: 1
+  fecha: 2012-10-08
+  observaciones: MyString
+  orden: 1
+  estado_id: 1

@@ -1,0 +1,58 @@
+<div>
+  <div class="content-box">
+    <div class="content-header"><h3>
+    <div class="title-box">
+           Ver Fabricador
+    </div>  
+    <div class="btns-box">            
+    </div></h3></div>
+    <div class="content">
+     	<%= form_for(@activo_fabricador_ci) do |f| %>
+<table class="form-table">
+  <tr>
+    <td><%= f.label :nombre_comercial,"Nombre Comercial:" %></td>
+    <td><%= f.text_field :nombre_comercial,:readonly=>true  %></td>
+    <td><%= f.label :pagina_web,"Página Web:" %></td>
+    <td><%= f.text_field :pagina_web,:readonly=>true  %></td>
+  </tr> 
+  <tr>
+    <td><%= f.label :fecha_inicio_vigencia %></td>
+    <td><%= f.text_field :fecha_inicio_vigencia,:readonly=>true  %></td>
+    <td><%= f.label :fecha_fin_vigencia %></td>
+    <td><%= f.text_field :fecha_fin_vigencia,:readonly=>true %></td>
+  </tr> 
+</table> 
+<% end %>
+
+     	<div class="content-box">
+        <div class="content-header"><h3>
+        <div class="title-box">
+               Lista de Categorías 
+        </div>  
+        <div class="btns-box">
+        </div></h3></div>
+        <div class="content">
+          <table class="table" cellspacing="0" id="table" >    
+		<thead>	
+			  <tr>
+			    <th>Descripcion corta</th>			    
+			    <th>Fecha inicio vigencia</th>
+			    <th>Fecha fin vigencia</th>
+			  </tr>
+			</thead>
+			<tbody>
+			<% @activo_categoria_cis.each do |activo_categoria_ci| %>
+			  <tr  class="<%= cycle("even", "odd") %>">
+			    <td><%= activo_categoria_ci.descripcion_corta %></td>			    
+			    <td><%= activo_categoria_ci.fecha_inicio_vigencia.strftime("%d/%m/%Y") %></td>
+			    <td><%= activo_categoria_ci.fecha_fin_vigencia.strftime("%d/%m/%Y") %></td>			   
+			  </tr>
+			<% end %>
+		</tbody>
+			</table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

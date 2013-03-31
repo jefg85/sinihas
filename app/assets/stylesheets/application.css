@@ -1,0 +1,81 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require colorbox/colorbox 
+ *= require jalerts/jquery.alerts 
+ *= require pnotify/jquery.pnotify.default
+ *= require pnotify/jquery.pnotify.default.icons
+ *= require jqueryui/jquery-ui-1.8.24.custom
+ *= require bootstrap/bootstrap
+ *= require evol.colorpicker 
+ *= require theme/screen
+ *= require theme/print
+ *= require theme/theme
+ *= require theme/markItUp
+ *= require theme/markItUp_2
+ */
+
+.table-reset{
+  padding: 0px; 
+  border: medium none;
+   margin: 0px;
+}
+
+.table-reset td{
+  padding: 0px;
+   border: medium none; 
+   margin: 0px;
+}
+
+.required-field{  
+  background: url("/assets/aplicacion/required-field.png") no-repeat scroll left center transparent;
+  padding-left: 10px;
+}
+
+
+.label-error{
+  color:red;
+}
+
+.field-error {  
+  border-color:red !important;
+ }
+ 
+.field-error:focus {
+  border-color: rgba(255, 0, 0, 0.8) !important;  
+  /* IE6-9 */
+
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6) !important;
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6) !important;
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 0, 0, 0.6) !important;
+}
+
+
+.form-table{
+  width:100%;
+  border: none;
+}
+
+.form-table tbody,.form-table td{
+  border: none;
+}
+
+.form-table label{  
+  display: inline;
+  font-weight:bold;
+}
+
+
+.form-table td{
+  vertical-align: top;
+  border: none;
+  background: none;
+}
+

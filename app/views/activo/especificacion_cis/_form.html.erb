@@ -1,0 +1,22 @@
+<%= f.hidden_field :ci_id %>
+<table class="form-table">
+	<tr>
+		<td><%= f.label :prop_esp_ci_id,"Propiedad Específica:" %></td>
+		<td><%= f.collection_select :prop_esp_ci_id, @prop_esp_ci_id, :id, :nombre_campo,  {:include_blank => true}  %></td>
+		<td><%= f.label :valor_cadena,"Valor Cadena:" %></td>
+		<td><%= f.text_field :valor_cadena %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :valor_logico,"Valor Lógico:" %></td>
+		<td><%= f.text_field :valor_logico %></td>
+		<td><%= f.label :valor_numerico,"Númerico:" %></td>
+		<td><%= f.text_field :valor_numerico %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :valor_real,"Valor Real:" %></td>
+		<td><%= f.text_field :valor_real %></td>
+		<td><%= f.label :estado_id,"Estado:" %></td>
+		<td><%= f.collection_select :estado_id, @estado_id, :id, :nombre,  {:include_blank => true}  %></td>
+	</tr>
+</table>
+

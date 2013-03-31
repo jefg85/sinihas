@@ -1,0 +1,40 @@
+<div>
+      <div class="content-box">
+        <div class="content-header">
+        <h3>
+        <div class="title-box">
+              Tipos de Incidentes 
+        </div>  
+        <div class="btns-box">
+          <button onclick="window.location='/incidente/tipo_incidente_categoria_cis/new'">
+                  Agregar
+                </button>      
+        </div></h3>
+        </div>
+        <div class="content">
+          <table class="table" cellspacing="0" id="table" >    
+    <thead> 
+  <tr>
+    <th>Categoría</th>
+    <th>Descripción corta</th>    
+    <th>Estado</th>
+    <th>Acciones</th>    
+  </tr>
+</thead>
+<tbody>
+<% @incidente_tipo_incidente_categoria_cis.each do |item| %>
+  <tr  class="<%= cycle("even", "odd") %>"> 
+    <td><%= item.categoria.descripcion_corta %></td>
+    <td><%= item.descripcion_corta %></td>         
+    <td><%= item.estado.nombre %></td>             
+    <td><%= link_to 'Editar', edit_incidente_tipo_incidente_categoria_ci_path(item) %> |
+    <%= link_to 'Borrar', item, method: :delete, data: { confirm: 'Seguro de eliminar?' } %></td>
+  </tr>
+<% end %>
+</tbody>
+</table>
+<%= paginate @incidente_tipo_incidente_categoria_cis %>
+
+        </div>
+      </div>
+</div>

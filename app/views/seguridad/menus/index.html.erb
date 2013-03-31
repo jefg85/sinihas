@@ -1,0 +1,33 @@
+<h1>Listing seguridad_menus</h1>
+
+<table>
+  <tr>
+    <th>Nombre</th>
+    <th>Recurso</th>
+    <th>Modulo</th>
+    <th>Menu</th>
+    <th>Orden</th>
+    <th>Activo</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @seguridad_menus.each do |seguridad_menu| %>
+  <tr>
+    <td><%= seguridad_menu.nombre %></td>
+    <td><%= seguridad_menu.recurso_id %></td>
+    <td><%= seguridad_menu.modulo_id %></td>
+    <td><%= seguridad_menu.menu_id %></td>
+    <td><%= seguridad_menu.orden %></td>
+    <td><%= seguridad_menu.activo %></td>
+    <td><%= link_to 'Show', seguridad_menu %></td>
+    <td><%= link_to 'Edit', edit_seguridad_menu_path(seguridad_menu) %></td>
+    <td><%= link_to 'Destroy', seguridad_menu, method: :delete, data: { confirm: 'seguro de eliminar?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Menu', new_seguridad_menu_path %>

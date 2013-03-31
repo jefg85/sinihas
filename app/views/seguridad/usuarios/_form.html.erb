@@ -1,0 +1,29 @@
+
+<table class="form-table">	  		
+	<tr class="field">
+		<td><%= f.label :usuario , "Usuario:" %></td>
+		<% if @seguridad_usuario.id.nil? %>		
+		<td><%= f.text_field :usuario %></td>
+		<% else %>
+		<td><%= @seguridad_usuario.usuario %></td>
+		<% end %>
+		<td><%= f.label :email , "Email:" %></td>
+		<td><%= f.text_field :email %></td>
+	</tr>
+	<tr class="field">
+		<td><%= f.label :nombres, "Nombres:" %></td>
+		<td><%= f.text_field :nombres %></td>
+		<td><%= f.label :apellidos, "Apellidos:" %></td>
+		<td><%= f.text_field :apellidos %></td>
+	</tr>	
+	<tr class="sub-header">
+		<td colspan="4">Contraseña</td>
+	</tr>  		  				
+	<tr class="field">
+		<td> <%= f.label :password, "Contraseña:" %></td>
+		<td> <%= f.password_field :password, :autocomplete => "off"  %></td>
+		<td> <%= f.label :password_confirmation, "Confirmación:" %></td>
+		<td> <%= f.password_field :password_confirmation %> </td>
+	</tr>
+</table>
+

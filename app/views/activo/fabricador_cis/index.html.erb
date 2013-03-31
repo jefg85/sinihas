@@ -1,0 +1,59 @@
+<div>
+      <div class="content-box">
+        <div class="content-header"><h3>
+        <div class="title-box">
+               Lista de Fabricadores 
+        </div>  
+        <div class="btns-box">
+<table class="table-reset">
+<tr>
+  <td>
+<form class="form-search" action="/activo/fabricador_cis">
+  <input type="text" name="prBuscar" class="input-medium search-query" placeholder="buscar...">
+  <button type="submit" class="btn">Buscar</button>
+</form>  
+  </td>
+  <td> &nbsp;</td>
+  <td>
+  <button onclick="window.location='/activo/fabricador_cis/new'">
+                  Agregar
+                </button>   
+    <button onclick="window.open('/activo/fabricador_cis/report', '_blank');">Reporte</button>                     
+  </td>
+</tr>
+</table>
+       
+        </div></h3></div>
+        <div class="content">
+          <table class="table" cellspacing="0" id="table" >    
+        <thead> 
+  <tr>
+    <th>Nombre comercial</th>
+    <th>Acciones</th>               
+ </tr>
+</thead>
+<tbody>
+
+<% @activo_fabricador_cis.each do |activo_fabricador_ci| %>
+  <tr  class="<%= cycle("even", "odd") %>">
+    <td><%= activo_fabricador_ci.nombre_comercial %></td>        
+    <td>
+    	<%= link_to 'Ver', activo_fabricador_ci %> |
+    	<%= link_to 'Editar', edit_activo_fabricador_ci_path(activo_fabricador_ci) %>
+     </td>
+              </tr>
+            <% end %>
+        </tbody>
+            </table>
+
+        </div>
+      </div>
+</div>
+   
+<script>
+
+function fnBuscar(){
+	var buscar = $('#prBuscar').val();
+	window.location='/activo/fabricador_cis?prBuscar='+buscar;
+  	}
+  </script>

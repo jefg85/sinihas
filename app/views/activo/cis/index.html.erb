@@ -1,0 +1,46 @@
+<div>
+      <div class="content-box">
+        <div class="content-header"><h3>
+        <div class="title-box">
+               Lista de elementos de configuración (CI) 
+        </div>  
+        <div class="btns-box">
+          <button onclick="window.location='/activo/cis/new'">
+                  Agregar
+                </button>    
+                <button onclick="window.open('/activo/cis/report', '_blank');">Reporte</button>                  
+        </div></h3></div>
+        <div class="content">
+          <table class="table">
+          	<thead>
+			<tr>
+		    <th>Código</th>
+		    <th>Nombre</th>
+		    <th>Descripción</th>
+		    <th>Nombre producto</th>
+		    <th>Versión</th>
+		    <th>Fabricador</th>
+		    <th>Proveedor</th>
+		    <th>Acciones</th>		    
+		  </tr>
+		  </thead>
+		
+		<% @activo_cis.each do |activo_ci| %>
+		  <tr  class="<%= cycle("even", "odd") %>">
+		    <td><%= activo_ci.codigo_inventario %></td>
+		    <td><%= activo_ci.nombre %></td>
+		    <td><%= activo_ci.descripcion %></td>
+		    <td><%= activo_ci.nombre_producto %></td>
+		    <td><%= activo_ci.modelo_version %></td>
+		    <td><%= activo_ci.fabricador.nombre_comercial %></td>
+		    <td><%= activo_ci.proveedor.nombre_comercial %></td>
+		    <td><%= link_to 'Editar', edit_activo_ci_path(activo_ci) %> |
+		    <%= link_to 'Borrar', activo_ci, method: :delete, data: { confirm: 'Seguro de Eliminar?' } %>
+		    </td>
+		  </tr>
+		<% end %>
+		</table>
+        </div>
+      </div>
+</div>
+  

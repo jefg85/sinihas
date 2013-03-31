@@ -1,0 +1,20 @@
+<table class="form-table">
+  <tr>
+    <td><%= f.label :nombre_comercial,"Nombre Comercial:" %></td>
+    <td><%= f.text_field :nombre_comercial %></td>
+    <td><%= f.label :pagina_web,"Página Web:" %></td>
+    <td><%= f.text_field :pagina_web %></td>
+  </tr> 
+  <tr>
+    <td><%= f.label :fecha_inicio_vigencia %></td>
+    <td><%= f.text_field :fecha_inicio_vigencia %></td>
+    <td><%= f.label :fecha_fin_vigencia %></td>
+    <td><%= f.text_field :fecha_fin_vigencia %></td>
+  </tr> 
+</table> 
+ <script>
+    $(function() {
+        $( "#activo_fabricador_ci_fecha_inicio_vigencia" ).datepicker();
+        $( "#activo_fabricador_ci_fecha_fin_vigencia" ).datepicker();
+    });
+    </script>

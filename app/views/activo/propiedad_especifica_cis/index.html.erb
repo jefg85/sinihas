@@ -1,0 +1,54 @@
+<div>
+      <div class="content-box">
+        <div class="content-header"><h3>
+        <div class="title-box">
+               Propiedad Especifica  
+        </div>  
+        <div class="btns-box">
+<table class="table-reset">
+<tr>
+  <td>
+<form class="form-search" action="/activo/propiedad_especifica_cis">
+  <input type="text" name="prBuscar" class="input-medium search-query" placeholder="buscar...">
+  <button type="submit" class="btn">Buscar</button>
+</form>  
+  </td>
+  <td> &nbsp;</td>
+  <td>
+  <button onclick="window.location='/activo/propiedad_especifica_cis/new'">
+                  Agregar
+                </button>       
+		  </td>
+		</tr>
+		</table> 
+        </div></h3></div>
+        <div class="content">
+          <table class="table">	
+          <thead>
+			  <tr>
+			    <th>Nombre campo</th>
+			    <th>Tipo campo</th>
+			    <th>Valor string</th>
+			    <th>Visualizar</th>
+			    <th>Fecha inicio vigencia</th>
+			    <th>Fecha fin vigencia</th>
+			    <th>Acciones</th>			    
+			  </tr>
+			</thead>		  
+			<% @activo_propiedad_especifica_cis.each do |activo_propiedad_especifica_ci| %>
+			  <tr  class="<%= cycle("even", "odd") %>">
+			    <td><%= activo_propiedad_especifica_ci.nombre_campo %></td>
+			    <td><%= activo_propiedad_especifica_ci.tipo.nombre %></td>
+			    <td><%= activo_propiedad_especifica_ci.valor_string %></td>
+			    <td><%= activo_propiedad_especifica_ci.visualizar ? 'SI' : 'NO' %></td>
+			    <td><%= activo_propiedad_especifica_ci.fecha_inicio_vigencia %></td>
+			    <td><%= activo_propiedad_especifica_ci.fecha_fin_vigencia %></td>
+			    <td>
+			    <%= link_to 'Ver', activo_propiedad_especifica_ci %> |
+			    <%= link_to 'Editar', edit_activo_propiedad_especifica_ci_path(activo_propiedad_especifica_ci) %>
+			  </tr>
+			<% end %>
+			</table>
+        </div>
+      </div>
+  

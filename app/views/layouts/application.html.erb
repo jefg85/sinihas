@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>SINIHAS</title>
+	
+<%= stylesheet_link_tag    "application", :media => "all" %>
+<%= javascript_include_tag "login"%>
+	
+<% if usuario_signed_in? %>
+<%= javascript_include_tag "application"%>	
+<script type="text/javascript">
+   $(document).ready(function() {
+		// call the tablesorter plugin
+		/*$("table").tablesorter({		
+			sortList: [[0,0]]
+		});*/
+	});
+</script>
+<% end %>       
+<%= csrf_meta_tags %>
+</head>
+<body <% if !usuario_signed_in? %>	class="login" <% end %> >
+<% if usuario_signed_in? %>	
+<div class="headwrap">
+
+	<div class="container_12 header">
+        <div class="grid_8 logo">
+        	<h1>SINIHAS</h1>
+        	<% if !session[:modulo_nombre].nil? %>
+        	<p class="viewsite"><a href="#"><%= session[:modulo_nombre]%></a></p>
+			<%end%>
+        </div><!--/logo-->
+        <% if usuario_signed_in? %>
+        <div class="grid_4 last h-details">
+        	<div class="logged-in">
+            	<%= link_to "Salir", logout_path, :class=>'logout' %>
+                Usuario: <a href="#"><%= current_usuario.usuario %></a>
+            </div><!--/logged-in-->
+        </div><!--/hdetails-->
+        <div class="container_12 nav">
+        	<div class="ddsmoothmenu" id="smoothmenu1">
+                <ul>
+                	<li><a href="/" >Inicio</a></li>
+                	<% if !session[:modulo_id].nil? %>
+					<% session[:menus].each do |menu|%>
+						<%if menu["menu_id"].nil?%>			
+							<li id="<%=menu["id"]%>"><a href="<%=menu["url"]%>"><%=menu["nombre"]%></a>	</li>
+						<%end%>
+					 <%end%>		
+					<% end %>
+                </ul>
+                <br style="clear: left">
+          	</div>
+        </div>
+        <% end %>
+        </div>
+</div>
+<div class="main">
+	<div class="container_12">
+		<div class="container_12">
+			<%= yield %>
+		</div>
+	</div>
+</div>
+<div class="container_12 footer">
+    <div class="grid_10 alpha">
+    	<p>Copyright © 2013 SINIHAS</p>
+    </div>
+    <div class="grid_2 omega">
+    	SINIHAS
+    </div>
+</div>
+<% else %> 
+	<%= yield %>
+<% end %> 
+     
+<script type="text/javascript">			
+	
+$(document).ready(function($) {				
+  <% if flash.count >0 %>  
+  	  	var titulo = '';
+  	  	var tipo='';
+  
+	      <% flash.each do |type, message| -%>
+	      var type = '<%= type %>';
+			if (type =='alert'){
+				tipo= 'error';
+	      		titulo = 'Error';
+			}	      	         
+			else if (type == 'notice'){
+				tipo = 'success';
+	      		titulo='Información';	
+			}        	
+	  		    
+	      	mostrarMensaje(titulo,'<%= message %>',tipo);  
+	      <% end -%>
+	  <% end %>	
+});	
+</script>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+ <div class="content-box"> 
+ 	<div class="content-header">
+    <h3>
+    <div class="title-box">
+          Seleccionar
+        </div>  
+        <div class="btns-box">         
+        </div>
+    </h3>
+        </div>
+        <div class="content">
+          <table class="table">
+            <thead>
+            <tr>
+              <th>Nombre</th>    
+              <th>Acciones</th>    
+            </tr>
+            </thead>
+          <% @seguridad_roles.each do |i| %>
+            <tr  class="<%= cycle("even", "odd") %>">
+              <td><%= i.nombre %></td>    
+              <td><a href="/usuarios/seleccionarrol?rol_id=<%= i.id %>&usuario_id=<%= @usuario_id %>">Seleccionar</a></td>
+            </tr>
+          <% end %>
+          </table>
+        </div>
+  </div>

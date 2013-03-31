@@ -1,0 +1,43 @@
+<div>
+      <div class="content-box">
+      	<div class="content-header">
+        <h3>
+        <div class="title-box">
+               Peticiones  
+        </div>  
+        <div class="btns-box">
+          <button onclick="window.location='/peticion/peticion_tis/new'">
+                  Agregar
+                </button>      
+        </div></h3>
+        </div>
+        <div class="content">
+          <table class="table" cellspacing="0" id="table">    
+		<thead>	 
+			<tr>
+			    <th>Nombre</th>
+			    <th>Descripción</th>
+			    <th>Tipo</th>
+			    <th>Prioridad</th>			    
+			    <th>Estado</th>
+			    <th>Acciones</th>			    
+			  </tr>
+			</thead>
+		<tbody>
+			<% @peticion_peticion_tis.each do |peticion_peticion_ti| %>
+			  <tr  class="<%= cycle("even", "odd") %>">  
+			    <td><%= peticion_peticion_ti.nombre_peticion_ti %></td>
+			    <td><%= peticion_peticion_ti.descripcion %></td>
+			    <td><%= peticion_peticion_ti.tipo.nombre %></td>
+			    <td><%= peticion_peticion_ti.prioridad.nombre %></td>			    
+			    <td><%= peticion_peticion_ti.estado.nombre %></td>			   
+			    <td><%= link_to 'Editar', edit_peticion_peticion_ti_path(peticion_peticion_ti) %> |
+			    <%= link_to 'Borrar', peticion_peticion_ti, method: :delete, data: { confirm: 'Seguro de eliminar?' } %></td>
+			  </tr>
+			<% end %>
+		</tbody>
+			</table>
+
+        </div>
+      </div>
+</div>

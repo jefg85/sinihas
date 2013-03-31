@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  ci_id: 1
+  prop_esp_ci_id: 1
+  valor_cadena: MyString
+  valor_logico: MyString
+  valor_numerico: 1
+  valor_real: 9.99
+  valor_binario: MyString
+  estado_id: 1
+
+two:
+  ci_id: 1
+  prop_esp_ci_id: 1
+  valor_cadena: MyString
+  valor_logico: MyString
+  valor_numerico: 1
+  valor_real: 9.99
+  valor_binario: MyString
+  estado_id: 1

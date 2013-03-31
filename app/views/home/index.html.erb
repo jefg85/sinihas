@@ -1,0 +1,19 @@
+<div class="welcome">
+	<div>
+        <h2><span>Bienvenido: </span> <%= current_usuario.nombres + ' ' + current_usuario.apellidos%></h2>
+    </div>
+</div>
+
+<div style="margin:auto; width:750px">
+	<ul class="toolbar">
+		<%@modulos.each do |modulo|%>	
+		<li class="grid_2 alpha">
+			<a href="#" onClick="window.location='home/menu?modulo_id=<%=modulo["id"]%>'">
+		        <img alt="Button Name" src="/assets/<%=modulo["url_imagen"]%>">
+		        <span><%=modulo["nombre"]%></span>
+		    </a>	    
+		</li>													
+		<%end%>		
+	</ul>
+</div>
+     

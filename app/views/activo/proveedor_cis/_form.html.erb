@@ -1,0 +1,41 @@
+<table class="form-table">
+  <tr>
+    <td><%= f.label :nit,"NIT:" %></td>
+    <td><%= f.text_field :nit %></td>
+    <td><%= f.label :nombre_comercial,"Nombre Comercial:" %></td>
+    <td><%= f.text_field :nombre_comercial %></td>
+  </tr>
+    <tr>
+    <td><%= f.label :sigla,"Sigla:" %></td>
+    <td><%= f.text_field :sigla %></td>
+    <td><%= f.label :tipo_proveedor_id,"Tipo:" %></td>
+    <td><%= f.collection_select :tipo_proveedor_id, @tipo_proveedor_id, :id, :nombre,  {:include_blank => true}  %></td>
+  </tr>
+    <tr>
+    <td><%= f.label :direccion,"Dirección:" %></td>
+    <td><%= f.text_field :direccion %></td>
+    <td><%= f.label :telefono_convencional,"Teléfono:" %></td>
+    <td><%= f.text_field :telefono_convencional %></td>
+  </tr>
+    <tr>    
+    <td><%= f.label :telefono_celular,"Celular:" %></td>
+    <td> <%= f.text_field :telefono_celular %></td>
+    <td><%= f.label :telefono_fax,"Fax:" %></td>
+    <td> <%= f.text_field :telefono_fax %></td>
+  </tr>
+  <tr>   
+    <td><%= f.label :fecha_inicio_vigencia,"Fecha Inicio Vigencia:" %></td>
+    <td><%= f.text_field :fecha_inicio_vigencia %></td>
+    <td><%= f.label :fecha_fin_vigencia,"Fecha Fin Vigencia" %></td>
+    <td><%= f.text_field :fecha_fin_vigencia %></td>
+  </tr>
+  <tr>   
+    <td><%= f.label :pagina_web,"Página Web:" %></td>
+    <td><%= f.text_field :pagina_web %></td>
+  </table>     
+  <script>
+    $(function() {
+        $( "#activo_proveedor_ci_fecha_inicio_vigencia" ).datepicker();
+        $( "#activo_proveedor_ci_fecha_fin_vigencia" ).datepicker();
+    });
+</script>

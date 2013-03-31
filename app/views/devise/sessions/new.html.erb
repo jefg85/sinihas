@@ -1,0 +1,38 @@
+	
+	<div class="container_12">
+	<div class="grid_8 prefix_2 suffix_2">
+	<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+	<div style="width:auto; padding:20px;" class="main login">
+        
+        	<div class="content-box">
+            
+            	<div class="content-header">
+                
+                	<h3>Autenticaci&oacute;n</h3>
+                
+                </div>
+                
+                	<p>Ingrese los datos para iniciar sesi&oacute;n:</p>
+                            
+                	<div class="lileft">
+                        <label>Usuario</label>
+                        <%= f.text_field :usuario %>
+                    </div>
+                    
+					<div class="liright">
+                        <label>Contrase&ntilde;a</label>                    
+                        <%= f.password_field :password %>
+                    </div>
+                    
+                    <p class="link">
+                    	<%= f.submit "Entrar" %>
+                    </p>
+                                        
+                    <div class="clear"></div>
+                	            
+            </div>
+    
+    	</div>
+    <% end %>
+    </div>
+    </div>

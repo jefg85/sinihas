@@ -1,0 +1,29 @@
+<table class="form-table">
+	<tr>
+		<td><%= f.label :categoria_servicio_id,"Categoría:" %></td>
+		<td><%= f.collection_select :categoria_servicio_id, @catalogo_categoria, :id, :nombre,  {:include_blank => true}  %></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>	
+		<td><%= f.label :nombre_servicio,"Nombre:" %></td>
+		<td colspan="3"><%= f.text_field :nombre_servicio,:style=> "width:96%" %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :descripcion_servicio,"Descripción:" %></td>
+		<td colspan="3"><%= f.text_area :descripcion_servicio,:rows=>2,:style=> "width:96%" %></td>
+	</tr>
+	<tr>
+		
+		<td><%= f.label :servicio_padre_id,"Servicio Padre:" %></td>
+		<td><%= f.collection_select :servicio_padre_id, @catalogo_servicio, :id, :nombre_servicio,  {:include_blank => true}  %></td>
+		<td><%= f.label :ci_id,"CI:" %></td>
+		<td><%= f.collection_select :ci_id, @ci_id, :id, :nombre,  {:include_blank => true}  %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :costo_asociado,"Costo:" %></td>
+		<td><%= f.text_field :costo_asociado %></td>
+		<td><%= f.label :estado_id,"Estado:" %></td>
+		<td><%= f.collection_select :estado_id, @catalogo_estado, :id, :nombre,  {:include_blank => true}  %></td>		
+	</tr>	
+</table>

@@ -1,0 +1,42 @@
+<div>
+      <div class="content-box">
+        <div class="content-header">
+        <h3>
+        <div class="title-box">
+               Catálogos  
+        </div>  
+        <div class="btns-box">
+          <button onclick="window.location='/catalogo/tipo_catalogos/new'">
+                  Agregar
+                </button>      
+        </div></h3>
+        </div>
+        <div class="content">
+          <table class="table" cellspacing="0" id="table" >
+          	<thead>
+			  <tr>
+			  	<th>Codigo</th>
+			    <th>Nombre</th>
+			    <th>Descripción</th>			    
+			    <th>Activo</th>
+			    <th>Acciones</th>			    
+			  </tr>
+			</thead>
+        	<tbody>
+			<% @catalogo_tipo_catalogos.each do |catalogo_tipo_catalogo| %>
+			  <tr  class="<%= cycle("even", "odd") %>">  
+			  	<td><%= catalogo_tipo_catalogo.codigo %></td>
+			    <td><%= catalogo_tipo_catalogo.nombre %></td>
+			    <td><%= catalogo_tipo_catalogo.descripcion %></td>			    
+			    <td><%= catalogo_tipo_catalogo.activo ? 'Si':'No' %></td>			    
+			    <td><%= link_to 'Editar', edit_catalogo_tipo_catalogo_path(catalogo_tipo_catalogo) %> |
+			    <%= link_to 'Borrar', catalogo_tipo_catalogo, method: :delete, data: { confirm: 'Desea Borrar?' } %></td>
+			  </tr>
+			<% end %>
+			 </tbody>
+			</table>
+			<%= paginate @catalogo_tipo_catalogos %>
+
+        </div>
+      </div>
+</div>

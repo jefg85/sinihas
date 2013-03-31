@@ -1,0 +1,69 @@
+<div>
+      <div class="content-box">
+      	<div class="content-header">
+      	<%= form_for(@seguridad_usuario, :validate => true) do |f| %>
+        <h3>
+        <div class="title-box">
+               Editar Usuario Id:  <%=@seguridad_usuario.id%>
+        </div>  
+        <div class="btns-box"> 
+        	<%= f.submit "Guardar" %>               
+        </div>
+        </h3>
+		</div>
+       	<%= render :partial => "form", :locals => { :f => f } %>
+       	<% end %>
+
+   <div class="content-box">
+   	<div class="content-header">
+    <h3>
+    <div class="title-box">
+           Lista de Roles
+        </div>  
+        <div class="btns-box"> 
+          <button onClick="fnAgregar();">Agregar</button>                   
+        </div></h3>
+        </div>
+        <div class="content">
+          <table class="table" cellspacing="0" id="table">
+            <thead>
+            <tr>
+              <th>Nombre</th>                  
+              <th>Acciones</th>    
+            </tr>
+          </thead>
+          <tbody>
+          <% @seguridad_roles.each do |i| %>
+            <tr  class="<%= cycle("even", "odd") %>">
+              <td><%= i.nombre %></td>                  
+              <td><a onClick="fnQuitar('<%= i.id %>','<%= @seguridad_usuario.id %>');">Quitar</a></td>    
+            </tr>
+          <% end %>
+        </tbody>
+          </table>
+        </div>
+  </div>  
+
+
+
+<script type="text/javascript">
+
+function fnAgregar(){
+  $.colorbox({href:"/usuarios/agregarrol?usuario_id=<%= @seguridad_usuario.id %>",height:"80%",width:"50%"});
+}
+
+function fnQuitar(rol_id,usuario_id){
+
+   jConfirm('¿ Seguro de eliminar ?', 'Confirmación', function(result) {       
+        if(result){       
+         window.location = "/usuarios/quitarrol?rol_id="+rol_id+"&usuario_id="+ usuario_id         
+          }           
+    });
+}
+
+</script>
+
+
+      </div>       
+  
+</div>

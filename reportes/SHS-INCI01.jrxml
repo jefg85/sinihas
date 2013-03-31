@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SHS-INCI01" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="41e2b638-4a49-4990-a273-c98499b57ce1">
+	<property name="ireport.zoom" value="1.3310000000000004"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="33"/>
+	<parameter name="prid" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select i.fecha_incidente,i.fecha_informe,i.resumen,
+prio.nombre as prioridad, grupo.nombre as grupo, impacto.nombre as impacto,
+ci.nombre, u.nombres +' '+ u.apellidos as informado_por,
+tipo_inci.descripcion_corta as tipo_incidente,
+ai.fecha_inicio as actividad_fecha_inicio,ai.fecha_fin as actividad_fecha_fin,
+ai.resumen as actividad_resumen,ai.resolucion as actividad_resolucion,
+u_actividad.nombres +' '+ u_actividad.apellidos as actividad_soporte_ti
+from incidente_incidentes i
+left join incidente_actividad_incidentes ai on i.id = ai.incidente_id
+left join seguridad_usuarios u on u.id = i.informado_por
+left join seguridad_usuarios u_actividad on u_actividad.id = ai.soporte_ti_id
+left join catalogo_catalogos prio on prio.id = i.prioridad_id
+left join catalogo_catalogos grupo on grupo.id = i.grupo_id
+left join catalogo_catalogos impacto on impacto.id = i.impacto_id
+left join activo_cis ci on ci.id = i.ci_id
+left join incidente_tipo_incidente_categoria_cis tipo_inci on tipo_inci.id = i.tipo_incidente_id
+where i.id=$P{prid}
+]]>
+	</queryString>
+	<field name="fecha_incidente" class="java.sql.Date"/>
+	<field name="fecha_informe" class="java.sql.Date"/>
+	<field name="resumen" class="java.lang.String"/>
+	<field name="prioridad" class="java.lang.String"/>
+	<field name="grupo" class="java.lang.String"/>
+	<field name="impacto" class="java.lang.String"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="informado_por" class="java.lang.String"/>
+	<field name="tipo_incidente" class="java.lang.String"/>
+	<field name="actividad_fecha_inicio" class="java.sql.Date"/>
+	<field name="actividad_fecha_fin" class="java.sql.Date"/>
+	<field name="actividad_resumen" class="java.lang.String"/>
+	<field name="actividad_resolucion" class="java.lang.String"/>
+	<field name="actividad_soporte_ti" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="67" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="1cdb02c4-a556-4965-997a-80ff95cf0e91" x="477" y="10" width="100" height="19"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SHS-PROV01]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1cdb02c4-a556-4965-997a-80ff95cf0e91" x="10" y="10" width="297" height="19"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INSTITUTO NICARAGUENSE DE ENERGIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1cdb02c4-a556-4965-997a-80ff95cf0e91" x="12" y="35" width="132" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reporte de Incidente]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="168">
+			<textField>
+				<reportElement uuid="ece1a6e6-055a-40e1-8e64-c544c97868db" x="98" y="13" width="75" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fecha_incidente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8d7571af-9f9d-4de9-9065-241b978f2fcd" x="257" y="13" width="69" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{fecha_informe}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8c69304e-f833-4f36-bbe1-878638572971" x="98" y="37" width="472" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{resumen}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="cd209112-e137-4385-ae35-97fa938383b9" x="257" y="61" width="69" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{prioridad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="518e7ba6-80e3-49e4-bce3-43de3338c836" x="98" y="61" width="84" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{grupo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8caf494a-86fc-4c79-81fb-457ba98d2498" x="413" y="61" width="157" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{impacto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c4849744-cf3b-4a34-af7e-1ed7c2432982" x="98" y="110" width="472" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ab878e5c-16c4-4273-b5d5-f494b72d75ae" x="412" y="13" width="158" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{informado_por}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b4c6769e-367b-4aa0-9a5b-bc3650d0b10e" x="98" y="85" width="472" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{tipo_incidente}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="3b4a98d7-8c46-4fcf-908d-5d3691b45ed7" x="5" y="13" width="93" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha Incidente:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3b4a98d7-8c46-4fcf-908d-5d3691b45ed7" x="182" y="13" width="75" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha Informe:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3b4a98d7-8c46-4fcf-908d-5d3691b45ed7" x="5" y="37" width="93" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Resumen:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3b4a98d7-8c46-4fcf-908d-5d3691b45ed7" x="5" y="61" width="93" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Grupo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3b4a98d7-8c46-4fcf-908d-5d3691b45ed7" x="182" y="61" width="75" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Prioridad:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3b4a98d7-8c46-4fcf-908d-5d3691b45ed7" x="335" y="61" width="78" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Impacto:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3b4a98d7-8c46-4fcf-908d-5d3691b45ed7" x="334" y="13" width="78" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Informado por:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3b4a98d7-8c46-4fcf-908d-5d3691b45ed7" x="5" y="85" width="93" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3b4a98d7-8c46-4fcf-908d-5d3691b45ed7" x="5" y="110" width="93" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[CI:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1cdb02c4-a556-4965-997a-80ff95cf0e91" x="5" y="148" width="132" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Actividades]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="27" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="717e0e57-8f2d-4bb3-a01e-3757e7bdc22a" x="5" y="2" width="74" height="20"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha Inicio]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3670bdac-f86a-49b2-90b2-80b194654e30" x="79" y="2" width="65" height="20"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha Fin]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="67a82be1-69e3-499c-91c5-64d09c684275" x="144" y="2" width="154" height="20"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Resumen]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a8f426d9-6ac9-4bda-8e9a-eb8bcf15a9bb" x="298" y="2" width="172" height="20"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Resolución]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f1858441-8f35-49ec-8d4d-ed9adc36b6b5" x="470" y="2" width="103" height="20"/>
+				<box leftPadding="5">
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Soporte TI]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="27" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="e7a83503-3b45-4339-84ab-42e7ae43ddd8" x="5" y="0" width="74" height="20"/>
+				<box leftPadding="5"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{actividad_fecha_inicio}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="8e6851f5-81a0-4567-ab2a-7c57a6112223" x="79" y="0" width="65" height="20"/>
+				<box leftPadding="5"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{actividad_fecha_fin}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="efaccc67-8db4-45c7-baa1-148ba153a9d0" x="144" y="0" width="154" height="20"/>
+				<box leftPadding="5"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{actividad_resumen}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="efdcd77b-ae67-4170-84d6-51517806a321" x="298" y="0" width="172" height="20"/>
+				<box leftPadding="5"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{actividad_resolucion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c331b4e4-d920-4d5c-823b-cac08f9c63e0" x="473" y="0" width="100" height="20"/>
+				<box leftPadding="5"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{actividad_soporte_ti}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="36">
+			<textField>
+				<reportElement uuid="9774dca6-43c8-48bf-bb60-db8438119e2d" x="218" y="10" width="80" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="df2f6dd0-b666-4ee5-84cf-45fe43e96443" x="298" y="10" width="40" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="ef33f564-7bbc-491d-9d56-ca4e1f04ecd1" x="79" y="12" width="94" height="20"/>
+				<textElement/>
+				<text><![CDATA[Módulo: Incidentes]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement uuid="c8fea89a-b2e5-4c39-9b28-2bf231a75986" x="470" y="10" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="ef33f564-7bbc-491d-9d56-ca4e1f04ecd1" x="5" y="12" width="58" height="20"/>
+				<textElement/>
+				<text><![CDATA[Versión 1.0]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="06cc3786-9d22-474e-8dd6-915ca150f6ec" x="370" y="10" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Fecha de Impresión:]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

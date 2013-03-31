@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="lista_fabricadores" language="groovy" pageWidth="612" pageHeight="792" columnWidth="572" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="625e6d2e-1606-4e7e-b72c-add519ebd2cf">
+	<property name="ireport.zoom" value="1.3310000000000004"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT * FROM activo_fabricador_cis]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="nombre_comercial" class="java.lang.String"/>
+	<field name="pagina_web" class="java.lang.String"/>
+	<field name="url_logo" class="java.lang.String"/>
+	<field name="fecha_inicio_vigencia" class="java.lang.String"/>
+	<field name="fecha_fin_vigencia" class="java.lang.String"/>
+	<title>
+		<band height="63" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="1cdb02c4-a556-4965-997a-80ff95cf0e91" x="469" y="6" width="100" height="19"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SHS-PROV02]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1cdb02c4-a556-4965-997a-80ff95cf0e91" x="2" y="6" width="297" height="19"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INSTITUTO NICARAGUENSE DE ENERGIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1cdb02c4-a556-4965-997a-80ff95cf0e91" x="3" y="31" width="132" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Lista de Fabricadores]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="52dd7e6a-f82b-4f4f-a8d7-7334378e65d0" x="0" y="0" width="370" height="20"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre Comercial]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d2467547-9ca8-4558-a7ee-3a0844ed6dd1" x="370" y="0" width="198" height="20"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Página Web]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement uuid="63c34a05-9e8b-4fc3-9b92-d76b2699d093" x="3" y="0" width="367" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{nombre_comercial}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b181c3cc-0cb5-4d18-a62e-b260a06abbff" x="381" y="0" width="187" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{pagina_web}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<lastPageFooter>
+		<band height="52">
+			<textField>
+				<reportElement uuid="9774dca6-43c8-48bf-bb60-db8438119e2d" x="216" y="32" width="80" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="df2f6dd0-b666-4ee5-84cf-45fe43e96443" x="296" y="32" width="40" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="ef33f564-7bbc-491d-9d56-ca4e1f04ecd1" x="77" y="32" width="72" height="20"/>
+				<textElement/>
+				<text><![CDATA[Módulo: Activo]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement uuid="c8fea89a-b2e5-4c39-9b28-2bf231a75986" x="468" y="32" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="ef33f564-7bbc-491d-9d56-ca4e1f04ecd1" x="3" y="32" width="58" height="20"/>
+				<textElement/>
+				<text><![CDATA[Versión 1.0]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="06cc3786-9d22-474e-8dd6-915ca150f6ec" x="368" y="32" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Fecha de Impresión:]]></text>
+			</staticText>
+		</band>
+	</lastPageFooter>
+</jasperReport>

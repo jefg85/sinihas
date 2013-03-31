@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  soporte_ci_id: 1
+  fecha_asignacion: 2012-10-08
+  estado_id: 1
+
+two:
+  soporte_ci_id: 1
+  fecha_asignacion: 2012-10-08
+  estado_id: 1

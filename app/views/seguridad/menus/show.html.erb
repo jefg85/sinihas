@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nombre:</b>
+  <%= @seguridad_menu.nombre %>
+</p>
+
+<p>
+  <b>Recurso:</b>
+  <%= @seguridad_menu.recurso_id %>
+</p>
+
+<p>
+  <b>Modulo:</b>
+  <%= @seguridad_menu.modulo_id %>
+</p>
+
+<p>
+  <b>Menu:</b>
+  <%= @seguridad_menu.menu_id %>
+</p>
+
+<p>
+  <b>Orden:</b>
+  <%= @seguridad_menu.orden %>
+</p>
+
+<p>
+  <b>Activo:</b>
+  <%= @seguridad_menu.activo %>
+</p>
+
+
+<%= link_to 'Edit', edit_seguridad_menu_path(@seguridad_menu) %> |
+<%= link_to 'Back', seguridad_menus_path %>

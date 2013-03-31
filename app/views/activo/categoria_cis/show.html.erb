@@ -1,0 +1,44 @@
+<div>
+  <div class="content-box">
+    <div class="content-header"><h3>
+    <div class="title-box">
+           Ver Categoría 
+    </div>  
+    <div class="btns-box">            
+    </div></h3></div>
+    <div class="content">
+<table class="form-table">
+	
+	<tr>
+		<td><label>Descripción Corta:</label> </td>
+		<td><%= @activo_categoria_ci.descripcion_corta %></td>
+		<td><label>Tipo:</label></td>
+		<td>
+			<%= @tipo %>
+		</td>
+	</tr>
+	<tr>
+		<td><label>Descripción Larga:</label></td>
+		<td colspan="3"><%= @activo_categoria_ci.descripcion_larga %></td>
+	</tr>
+	<tr>		
+		<td><label>Fecha Inicio de Vigencia:</label></td>
+		<td><%= @activo_categoria_ci.fecha_inicio_vigencia %></td>
+		<td><label>Fecha Fin de Vigencia:</label></td>
+		<td><%= @activo_categoria_ci.fecha_fin_vigencia %></td>
+	</tr>
+	<tr>
+		<td><label>Prefijo nombramiento:</label></td>
+		<td><%= @activo_categoria_ci.prefijo_nombramiento %></td>
+		<td><label>Posición:</label></td>
+		<td><%= @activo_categoria_ci.posicion %></td>
+	</tr>
+	
+	</table> 
+	<br />
+	<a href="/activo/categoria_cis">Regresar</a>
+
+    </div>
+  </div>
+</div>
+

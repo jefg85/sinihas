@@ -1,0 +1,21 @@
+<%= f.hidden_field :ci_id %>
+<table class="form-table">
+	<tr>
+		<td><%= f.label :tipo_informacion_trabajo_id,"Tipo información:" %></td>
+		<td><%= f.collection_select :tipo_informacion_trabajo_id, @tipo_informacion_trabajo_id, :id, :nombre,  {:include_blank => true}  %></td>
+		<td><%= f.label :fecha,"Fecha:" %></td>
+		<td><%= f.text_field :fecha %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :fuente_id,"Fuente:" %></td>
+		<td><%= f.collection_select :fuente_id, @fuente_id, :id, :nombre,  {:include_blank => true}  %></td>
+		<td><%= f.label :resumen,"Resumen:" %></td>
+		<td><%= f.text_field :resumen %></td>
+	</tr>	
+</table>
+ <script>
+$(function() {
+    $( "#activo_dato_trabajo_ci_fecha" ).datepicker();
+});
+</script>
+

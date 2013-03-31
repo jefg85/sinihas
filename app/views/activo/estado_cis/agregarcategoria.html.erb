@@ -1,0 +1,30 @@
+<div class="content-box">
+        <div class="content-header"><h3>
+        <div class="title-box">
+               Seleccionar Categoría 
+        </div>  
+        </h3></div>
+        <div class="content">
+          <table class="table" cellspacing="0" id="table" >    
+		<thead>	
+			  <tr>
+			    <th>Descripcion corta</th>			    
+			    <th>Fecha inicio vigencia</th>
+			    <th>Fecha fin vigencia</th>
+			    <th>Acciones</th>			    
+			  </tr>
+			</thead>
+			<tbody>
+			<% @activo_categoria_cis.each do |activo_categoria_ci| %>
+			  <tr  class="<%= cycle("even", "odd") %>">
+			    <td><%= activo_categoria_ci.descripcion_corta %></td>			    
+			    <td><%= activo_categoria_ci.fecha_inicio_vigencia.strftime("%d/%m/%Y") %></td>
+			    <td><%= activo_categoria_ci.fecha_fin_vigencia.strftime("%d/%m/%Y") %></td>			   
+			    <td><a href="/estado_cis/seleccionarcategoria?categoria_id=<%= activo_categoria_ci.id %>&estado_id=<%= @id %>">Seleccionar</a></td>
+			  </tr>
+			<% end %>
+		</tbody>
+			</table>
+
+        </div>
+      </div>

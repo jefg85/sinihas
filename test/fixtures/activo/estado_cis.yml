@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nombre: MyString
+  descripcion: MyString
+  color: MyString
+  fecha_inicio_vigencia: 2012-10-08
+  fecha_fin_vigencia: 2012-10-08
+
+two:
+  nombre: MyString
+  descripcion: MyString
+  color: MyString
+  fecha_inicio_vigencia: 2012-10-08
+  fecha_fin_vigencia: 2012-10-08

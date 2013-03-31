@@ -1,0 +1,38 @@
+<div>
+      <div class="content-box">
+      	<div class="content-header">
+        <h3>
+        <div class="title-box">
+               Usuarios  
+        </div>  
+        <div class="btns-box">
+          <button onclick="window.location='/seguridad/usuarios/new'">
+                  Agregar
+                </button>      
+        </div></h3>
+        </div>
+        <div class="content">
+          <table class="table" cellspacing="0" id="table" >
+            <thead>
+            <tr>
+              <th>Usuario</th>
+              <th>Nombres</th>
+              <th>Apellidos</th>
+              <th>Acciones</th>                  
+            </tr>
+          </thead>
+          <tbody>
+          <% @seguridad_usuarios.each do |seguridad_usuario| %>
+            <tr  class="<%= cycle("even", "odd") %>">
+              <td><%= seguridad_usuario.usuario %></td>
+              <td><%= seguridad_usuario.nombres %></td>
+              <td><%= seguridad_usuario.apellidos %></td>                  
+              <td><%= link_to 'Editar', edit_seguridad_usuario_path(seguridad_usuario) %> |
+              <%= link_to 'Borrar', seguridad_usuario, method: :delete, data: { confirm: 'Desea Borrar?' } %></td>
+            </tr>
+          <% end %>
+          <tbody>
+          </table>
+        </div>
+      </div>       
+</div>

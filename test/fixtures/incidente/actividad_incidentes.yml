@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  incidente_id: 1
+  fecha_inicio: 2012-10-08
+  fecha_fin: 2012-10-08
+  ci_utilizado_id: 1
+  resumen: MyString
+  descripcion: MyString
+  soporte_ti_id: 1
+  resolucion: MyString
+  estado_id: 1
+
+two:
+  incidente_id: 1
+  fecha_inicio: 2012-10-08
+  fecha_fin: 2012-10-08
+  ci_utilizado_id: 1
+  resumen: MyString
+  descripcion: MyString
+  soporte_ti_id: 1
+  resolucion: MyString
+  estado_id: 1

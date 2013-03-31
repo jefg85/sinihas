@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  tipo_catalogo_id: MyString
+  nombre: MyString
+  descripcion: MyString
+  orden: 1
+  activo: false
+
+two:
+  tipo_catalogo_id: MyString
+  nombre: MyString
+  descripcion: MyString
+  orden: 1
+  activo: false

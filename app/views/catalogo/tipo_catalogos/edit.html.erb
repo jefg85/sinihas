@@ -1,0 +1,80 @@
+<div>
+      <div class="content-box"> 	
+      	<%= form_for(@catalogo_tipo_catalogo, :validate => true) do |f| %>
+      	<div class="content-header">
+        <h3>
+        <div class="title-box">
+               Editar Catálogo Id: <%= @catalogo_tipo_catalogo.id %>
+        </div>  
+        <div class="btns-box">            
+        </div></h3>
+        </div>
+     	<%= render :partial => "form", :locals => { :f => f } %>
+     	<% end %>
+
+
+<div class="content-box"> 
+	<div class="content-header">	
+    <h3>
+    <div class="title-box">
+          Detalle
+        </div>  
+        <div class="btns-box"> 
+          <button onClick="fnAgregar();">Agregar</button>                   
+        </div></h3>
+        </div>  
+        <div class="content">
+          <table class="table" cellspacing="0" id="table">
+            <thead>
+        <tr>          
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Orden</th>
+          <th>Activo</th>
+          <th>Acciones</th>         
+        </tr>     
+        </thead>
+          <tbody>
+      <% @catalogo_catalogos.each do |catalogo_catalogo| %>
+        <tr  class="<%= cycle("even", "odd") %>">    
+          <td><%= catalogo_catalogo.nombre %></td>
+          <td><%= catalogo_catalogo.descripcion %></td>
+          <td><%= catalogo_catalogo.orden %></td>
+          <td><%= catalogo_catalogo.activo ? 'Si':'No'  %></td>          
+          <td><%= link_to 'Editar', edit_catalogo_catalogo_path(catalogo_catalogo),:class=>"colorbox" %> |
+          <%= link_to 'Borrar', catalogo_catalogo, method: :delete, data: { confirm: 'Desea eliminar?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+      </table>
+        </div>
+  </div>  
+
+      </div>       
+  
+</div>
+
+<script type="text/javascript">
+
+
+function fnAgregar(){
+  $.colorbox({href:"/catalogo/catalogos/new?tipo_id=<%= @catalogo_tipo_catalogo.id %>"});
+}
+
+
+function fnQuitar(rol_id,usuario_id){
+
+   jConfirm('¿ Seguro de eliminar ?', 'Confirmación', function(result) {       
+        if(result){       
+         window.location = "/usuarios/quitarrol?rol_id="+rol_id+"&usuario_id="+ usuario_id         
+          }           
+    });
+}
+
+$(document).ready(function($) {       
+  $('.colorbox').colorbox();
+}); 
+
+</script>
+
+

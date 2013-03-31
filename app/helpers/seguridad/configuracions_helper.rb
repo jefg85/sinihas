@@ -1,0 +1,2 @@
+module Seguridad::ConfiguracionsHelper
+end

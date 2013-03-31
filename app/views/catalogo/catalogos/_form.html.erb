@@ -1,0 +1,16 @@
+<%= f.hidden_field :tipo_catalogo_id %>  
+<table class="form-table">
+	<tr>
+		<td><%= f.label :nombre,"Nombre:" %></td>
+		<td><%= f.text_field :nombre %></td>
+		<td><%= f.label :descripcion,"Descripción:" %></td>
+		<td><%= f.text_field :descripcion %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :orden,"Orden:" %></td>
+		<td><%= f.number_field :orden %></td>
+		<td><%= f.label :activo,"Activo" %></td>
+		<td><%= f.check_box :activo %></td>
+	</tr>	
+</table>
+

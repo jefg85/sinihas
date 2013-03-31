@@ -1,0 +1,65 @@
+<table class="form-table">
+	<tr>
+		<td><%= f.label :fecha_incidente,"Fecha Incidente:" %></td>
+		<td><%= f.text_field :fecha_incidente %></td>
+		<td><%= f.label :fecha_informe ,"Fecha Informe:"%></td>
+		<td><%= f.text_field :fecha_informe %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :modo_id,"Modo:" %></td>
+		<td><%= f.text_field :modo_id %></td>		
+	</tr>
+	<tr>		
+		<td><%= f.label :resumen ,"Resumen:"%></td>		
+		<td colspan="3"><%= f.text_area :resumen ,:rows => 2,:style=>"width:96%;height:100px"%></td>		
+	</tr>
+	<tr>
+		<td><%= f.label :descripcion,"Descripción:" %></td>
+		<td><%= f.text_field :descripcion %></td>
+		<td><%= f.label :ci_id,"CI:" %></td>
+		<td><%= f.collection_select :ci_id, @ci, :id, :nombre,  {:include_blank => true}  %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :direccion_division,"Dirección división:" %></td>
+		<td><%= f.text_field :direccion_division %></td>
+		<td><%= f.label :departamento_oficina,"Departamento Oficina:" %></td>
+		<td><%= f.text_field :departamento_oficina %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :seccion_unidad,"Sección:" %></td>
+		<td><%= f.text_field :seccion_unidad %></td>
+		<td><%= f.label :grupo_id,"Grupo:" %></td>		
+		<td><%= f.collection_select :grupo_id, @catalogo_grupo, :id, :nombre,  {:include_blank => true}  %></td>
+	</tr>
+	<% if !@incidente_incidente.new_record? %>
+	<tr>
+		<td><%= f.label :prioridad_id,"Prioridad:" %></td>		
+		<td><%= f.collection_select :prioridad_id, @catalogo_prioridad, :id, :nombre,  {:include_blank => true}  %></td>
+		<td><%= f.label :impacto_id,"Impacto:" %></td>		
+		<td><%= f.collection_select :impacto_id, @catalogo_impacto, :id, :nombre,  {:include_blank => true}  %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :informado_por,"Informado por:" %></td>
+		<td><%= f.hidden_field :informado_por %>
+		<input type="text" disabled="disabled" value="<%= @nombre_informado %>">
+		</td>
+		<td><%= f.label :tipo_incidente_id,"Tipo Incidente:" %></td>
+		<td><%= f.collection_select :tipo_incidente_id, @tipo_incidente, :id, :descripcion_corta,  {:include_blank => true}  %></td>		
+	</tr>
+	<tr>
+		<td><%= f.label :resolucion,"Resolución:" %></td>
+		<td colspan="3"><%= f.text_area :resolucion ,:rows => 2,:style=>"width:96%"%></td>		
+	</tr>
+	<tr>		
+		<td><%= f.label :estado_id,"Estado:" %></td>		
+		<td><%= f.collection_select :estado_id, @catalogo_estado, :id, :nombre,  {:include_blank => true}  %></td>
+	</tr>
+	<% end %>
+</table> 
+
+ <script>
+    $(function() {
+        $( "#incidente_incidente_fecha_incidente" ).datepicker();
+        $( "#incidente_incidente_fecha_informe" ).datepicker();
+    });
+    </script>

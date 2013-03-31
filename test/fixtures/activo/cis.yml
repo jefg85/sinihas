@@ -1,0 +1,49 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nombre: MyString
+  descripcion: MyString
+  codigo_inventario: MyString
+  numero_serial: MyString
+  numero_parte: 1
+  soporte: false
+  impacto_id: 1
+  urgencia_id: 1
+  prioridad_id: 1
+  usuarios_afectados: MyString
+  informacion_adicional: MyString
+  categoria_nivel_i_id: 1
+  categoria_nivel_ii_id: 1
+  categoria_nivel_iii: 1
+  nombre_producto: MyString
+  modelo_version: MyString
+  fabricador_id: 1
+  proveedor_id: 1
+  direccion_division_id: 1
+  departamento_oficina_id: 1
+  seccion_unidad_id: 1
+  edificio_id: 1
+
+two:
+  nombre: MyString
+  descripcion: MyString
+  codigo_inventario: MyString
+  numero_serial: MyString
+  numero_parte: 1
+  soporte: false
+  impacto_id: 1
+  urgencia_id: 1
+  prioridad_id: 1
+  usuarios_afectados: MyString
+  informacion_adicional: MyString
+  categoria_nivel_i_id: 1
+  categoria_nivel_ii_id: 1
+  categoria_nivel_iii: 1
+  nombre_producto: MyString
+  modelo_version: MyString
+  fabricador_id: 1
+  proveedor_id: 1
+  direccion_division_id: 1
+  departamento_oficina_id: 1
+  seccion_unidad_id: 1
+  edificio_id: 1

@@ -1,0 +1,20 @@
+<table class="form-table">
+	<tr>
+		<td><%= f.label :codigo,"Código:" %></td>
+		<td><%= f.number_field :codigo %></td>
+		<td><%= f.label :nombre,"Nombre:" %></td>
+		<td><%= f.text_field :nombre %></td>		
+	</tr>
+	<tr>		
+		<td><%= f.label :descripcion ,"Descripción:" %></td>
+		<td><%= f.text_field :descripcion %></td>
+		<% if !@catalogo_tipo_catalogo.new_record? %>
+		<td><%= f.label :activo ,"Activo:"%></td>
+		<td><%= f.check_box :activo %></td>
+		<% else  %>
+		<td></td>
+		<td></td>
+		<%end %>
+	</tr>
+</table>
+

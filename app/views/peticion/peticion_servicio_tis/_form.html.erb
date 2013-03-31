@@ -1,0 +1,22 @@
+<%= form_for(@peticion_peticion_servicio_ti, :validate => true) do |f| %>
+<table class="form-table">
+	<tr>
+		<td><%= f.label :soporte_ci_id,"Soporte:" %></td>
+		<td><%= f.text_field :soporte_ci_id %></td>
+		<td><%= f.label :fecha_asignacion,"Fecha Asignación:" %></td>
+		<td><%= f.text_field :fecha_asignacion %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :estado_id,"Estado:" %></td>
+		<td><%= f.number_field :estado_id %></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td><%= f.submit "Guardar" %></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>	
+</table>  
+<% end %>

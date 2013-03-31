@@ -1,0 +1,48 @@
+<div>
+      <div class="content-box">
+        <div class="content-header"><h3>
+        <div class="title-box">
+               Lista de Proveedores 
+        </div>  
+        <div class="btns-box">
+          <button onclick="window.location='/activo/proveedor_cis/new'">
+                  Agregar
+                </button>      
+                <button onclick="window.open('/activo/proveedor_cis/report', '_blank');">Reporte</button>                 
+        </div></h3></div>
+        <div class="content">
+          <table class="table" cellspacing="0" id="table" >    
+        <thead> 
+              <tr>
+  <tr>
+    <th>Sigla</th>
+    <th>Nombre comercial</th>    
+    <th>Tipo proveedor</th>
+    <th>Acciones</th>    
+  </tr>
+
+<% @activo_proveedor_cis.each do |activo_proveedor_ci| %>
+  <tr  class="<%= cycle("even", "odd") %>">
+    <td><%= activo_proveedor_ci.sigla %></td>
+    <td><%= activo_proveedor_ci.nombre_comercial %></td>    
+    <td><%= activo_proveedor_ci.tipo.nombre %></td>
+    <td><%= link_to 'Editar', edit_activo_proveedor_ci_path(activo_proveedor_ci) %> |
+        <%= link_to 'Borrar', activo_proveedor_ci, method: :delete, data: { confirm: 'Seguro de eliminar?' } %></td>
+  </tr>
+<% end %>
+</tbody>
+            </table>
+
+        </div>
+      </div>
+</div>
+
+<script type="text/javascript">
+
+   // create the grid
+    var grid = new Ext.grid.TableGrid("table", {
+    with:800,
+      stripeRows: true // stripe alternate rows
+    });
+    grid.render();
+</script>

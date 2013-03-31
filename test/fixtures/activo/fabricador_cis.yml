@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nombre_comercial: MyString
+  pagina_web: MyString
+  url_logo: MyString
+  fecha_inicio_vigencia: 2012-10-08
+  fecha_fin_vigencia: 2012-10-08
+
+two:
+  nombre_comercial: MyString
+  pagina_web: MyString
+  url_logo: MyString
+  fecha_inicio_vigencia: 2012-10-08
+  fecha_fin_vigencia: 2012-10-08

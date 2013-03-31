@@ -1,0 +1,16 @@
+<%= f.hidden_field :ci_id %>
+<table class="form-table">
+	<tr>
+		<td><%= f.label :fecha,"Fecha:" %></td>
+		<td><%= f.text_field :fecha %></td>
+		<td><%= f.label :ci_relacion_id,"CI Relación:" %></td>
+		<td><%= f.number_field :ci_relacion_id %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :relacion_id,"Relación:" %></td>
+		<td><%= f.number_field :relacion_id %></td>
+		<td><%= f.label :estado_id,"Estado:" %></td>
+		<td><%= f.number_field :estado_id %></td>
+	</tr>
+</table>
+

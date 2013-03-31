@@ -1,0 +1,62 @@
+<div>
+  <div class="content-box">
+    <div class="content-header"><h3>
+    <div class="title-box">
+           Ver Estado  
+    </div>  
+    <div class="btns-box">            
+    </div></h3></div>
+    <div class="content">
+     	<%= form_for(@activo_estado_ci) do |f| %>
+<table class="form-table">
+	<tr>
+		<td><%= f.label :nombre,"Nombre:" %></td>
+		<td><%= f.text_field :nombre ,:readonly=>true %></td>
+		<td><%= f.label :descripcion,"Descripción:" %></td>
+		<td><%= f.text_field :descripcion,:readonly=>true %></td>
+	</tr>
+	<tr>		
+		<td><%= f.label :fecha_inicio_vigencia,"Fecha Inicio Vigencia:" %></td>
+		<td><%= f.text_field :fecha_inicio_vigencia,:readonly=>true %></td>
+		<td><%= f.label :fecha_fin_vigencia,"Fecha Fin Vigencia:" %></td>
+		<td><%= f.text_field :fecha_fin_vigencia,:readonly=>true %></td>
+	</tr>
+	<tr>
+		<td><%= f.label :color,"Color:" %></td>
+		<td><%= f.text_field :color,:readonly=>true %></td>
+		<td></td>
+		<td></td>
+	</tr>
+</table>
+<% end %>
+     	 <div class="content-box">
+        <div class="content-header"><h3>
+        <div class="title-box">
+               Lista de Categorías 
+        </div>  
+        </h3></div>
+        <div class="content">
+          <table class="table" cellspacing="0" id="table" >    
+		<thead>	
+			  <tr>
+			    <th>Descripcion corta</th>			    
+			    <th>Fecha inicio vigencia</th>
+			    <th>Fecha fin vigencia</th>
+			  </tr>
+			</thead>
+			<tbody>
+			<% @activo_categoria_cis.each do |activo_categoria_ci| %>
+			  <tr>
+			    <td><%= activo_categoria_ci.descripcion_corta %></td>			    
+			    <td><%= activo_categoria_ci.fecha_inicio_vigencia.strftime("%d/%m/%Y") %></td>
+			    <td><%= activo_categoria_ci.fecha_fin_vigencia.strftime("%d/%m/%Y") %></td>			   
+			  </tr>
+			<% end %>
+		</tbody>
+			</table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

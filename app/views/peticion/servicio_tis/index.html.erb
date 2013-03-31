@@ -1,0 +1,42 @@
+<div>
+      <div class="content-box">
+      	<div class="content-header">
+        <h3>
+        <div class="title-box">
+               Servicios  
+        </div>  
+        <div class="btns-box">
+          <button onclick="window.location='/peticion/servicio_tis/new'">
+                  Agregar
+                </button>      
+        </div></h3>
+        </div>
+        <div class="content">
+          <table class="table" cellspacing="0" id="table" >    
+		<thead>	
+		<tr>
+		    <th>Categoría</th>
+		    <th>Nombre</th>		    
+		    <th>Servicio padre</th>
+		    <th>Costo asociado</th>		    
+		    <th>Estado</th>
+		    <th>Acciones</th>		   
+		  </tr>
+		</thead>
+<tbody>
+		<% @peticion_servicio_tis.each do |peticion_servicio_ti| %>
+		  <tr  class="<%= cycle("even", "odd") %>">  
+		    <td><%= peticion_servicio_ti.categoria.nombre %></td>
+		    <td><%= peticion_servicio_ti.nombre_servicio %></td>		    
+		    <td><%= peticion_servicio_ti.servicio_padre_id %></td>
+		    <td><%= peticion_servicio_ti.costo_asociado %></td>		    
+		    <td><%= peticion_servicio_ti.estado.nombre %></td>		    
+		    <td><%= link_to 'Editar', edit_peticion_servicio_ti_path(peticion_servicio_ti) %> |
+		    <%= link_to 'Borrar', peticion_servicio_ti, method: :delete, data: { confirm: 'Seguro de eliminar?' } %></td>
+		  </tr>
+		<% end %>
+	</tbody>
+		</table>
+        </div>
+      </div>
+</div>

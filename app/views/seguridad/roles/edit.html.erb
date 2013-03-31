@@ -1,0 +1,79 @@
+<div>
+
+ 
+ <div class="content-box"> 	
+<%= form_for(@seguridad_role, :validate => true) do |f| %>
+      	<div class="content-header">
+        <h3>
+        <div class="title-box">
+               Editar Role Id  <%= @seguridad_role.id %>  
+        </div>  
+        <div class="btns-box">
+          	<%= f.submit "Guardar" %>    
+        </div></h3>
+        </div>
+         	<%= render :partial => "form", :locals => { :f => f } %>
+    
+<% end %>  
+      <div class="content-box">
+      	<div class="content-header">
+    <h3>
+    <div class="title-box">
+           Lista de Menus
+        </div>  
+        <div class="btns-box"> 
+          <button onClick="fnAgregarMenu();">Agregar</button>                   
+        </div></h3>
+        </div>
+        <div class="content">
+          <table class="table" cellspacing="0" id="table" >
+             <thead>
+            <tr>
+              <th>Nombre</th>    
+              <th>Modulo</th>   
+              <th>Agregar</th>    
+              <th>Editar</th>    
+              <th>Ver</th>    
+              <th>Borrar</th>    
+              <th>Acciones</th>    
+            </tr>
+             </thead>
+          <tbody>
+          <% @seguridad_menus.each do |seguridad_menu| %>
+            <tr  class="<%= cycle("even", "odd") %>">
+              <td><%= seguridad_menu.nombre %></td>    
+              <td><%= seguridad_menu.nombremodulo %></td>
+              <td><%= seguridad_menu.crear==true ? 'SI' : 'NO' %></td>
+              <td><%= seguridad_menu.actualizar==true ? 'SI' : 'NO' %></td>
+              <td><%= seguridad_menu.ver==true ? 'SI' : 'NO' %></td>
+              <td><%= seguridad_menu.borrar==true ? 'SI' : 'NO' %></td>
+              <td><a onClick="fnQuitarMenu('<%= seguridad_menu.id %>','<%= @seguridad_role.id %>');">Quitar</a></td>    
+            </tr>
+          <% end %>
+        </tbody>
+          </table>
+        </div>
+  </div>  
+  </div>  
+
+</div>
+
+
+<script type="text/javascript">
+
+function fnAgregarMenu(){
+  $.colorbox({href:"/roles/agregarmenu?rol_id=<%= @seguridad_role.id %>",width:"50%",height:"400px"});
+}
+
+
+function fnQuitarMenu(menu_id,rol_id){
+
+   jConfirm('¿ Seguro de eliminar ?', 'Confirmación', function(result) {       
+        if(result){       
+         window.location = "/roles/quitarmenu?menu_id="+menu_id+"&rol_id="+ rol_id         
+          }           
+    });
+}
+
+
+</script>

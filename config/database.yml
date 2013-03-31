@@ -1,0 +1,26 @@
+
+
+development:
+ adapter: sqlserver
+ dataserver: MJGT-PC
+ #host: mydb.net
+ database: SINIHAS
+ username: sa
+ password: codee123
+
+
+test:
+ adapter: sqlserver
+ dataserver: FLETESGONZALEZ
+ #host: mydb.net
+ database: SINIHAS
+ username: sa
+ password: codee123
+
+production:
+ adapter: sqlserver
+ dataserver: PAMELA-GONZALEZ\SQLSERVERR2
+ #host: mydb.net
+ database: sinihas_development
+ username: sa
+ password: codee123

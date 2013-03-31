@@ -1,0 +1,197 @@
+<div>
+  <div class="content-box">
+  	<%= form_for(@activo_ci, :validate => true) do |f| %>
+    <div class="content-header"><h3>
+    <div class="title-box">
+           Editar CI  
+    </div>  
+    <div class="btns-box">   
+    	<%= f.submit "Guardar" %>         
+    </div></h3></div>
+     	<%= render :partial => "form", :locals => { :f => f } %>
+     <% end %>
+     	
+		     	
+		<div id="tabs">
+			<ul>
+				<li><a href="#tabs-1">Ciclo de Vida</a></li>
+				<li><a href="#tabs-2">Propiedad Específica</a></li>
+				<li><a href="#tabs-3">Datos Trabajo</a></li>
+				<li><a href="#tabs-4">Relacion CI</a></li>
+			</ul>
+			
+			<div id="tabs-1">
+				<div class="content-box">
+			    <div class="content-header"><h3>
+			    <div class="title-box">
+			          Ciclo de Vida
+			        </div>  
+			        <div class="btns-box"> 
+			          <button onClick="fnAgregarCiclo();">Agregar</button>                   
+			        </div></h3></div>
+			        <div class="content">
+				 <table class="table">		
+				 <thead>
+				  <tr>
+				    <th>Operación</th>
+				    <th>Estado</th>
+				    <th>Acciones</th>			    
+				  </tr>
+				  </thead>	 
+				<% @activo_ciclo_vidas.each do |activo_ciclo_vida| %>
+				  <tr  class="<%= cycle("even", "odd") %>">
+				    <td><%= activo_ciclo_vida.operacion %></td>
+				    <td><%= activo_ciclo_vida.estado_categoria.estado.nombre %></td>
+				    <td>
+				    	<%= link_to 'Editar', edit_activo_ciclo_vida_path(activo_ciclo_vida),:class=>"colorbox" %> |
+				    	<%= link_to 'Borrar', activo_ciclo_vida, method: :delete, data: { confirm: 'Seguro de Eliminar?' } %></td>
+				  </tr>
+				<% end %>
+				</table>
+				 </div>
+  				</div>  
+			</div>
+			
+			<div id="tabs-2">
+				<div class="content-box">
+			    <div class="content-header"><h3>
+			    <div class="title-box">
+			          Especificación
+			        </div>  
+			        <div class="btns-box"> 
+			          <button onClick="fnAgregarPropiedad();">Agregar</button>                   
+			        </div></h3></div>
+			        <div class="content">
+				<table class="table">		
+				<thead>	 	  
+				  <tr>
+				    <th>Propiedad</th>
+				    <th>Valor cadena</th>
+				    <th>Valor logico</th>
+				    <th>Valor númerico</th>
+				    <th>Valor real</th>			    
+				    <th>Acciones</th>			    
+				  </tr>
+				</thead>	 
+				<% @activo_especificacion_cis.each do |activo_especificacion_ci| %>
+				  <tr  class="<%= cycle("even", "odd") %>">
+				    <td><%= activo_especificacion_ci.propiedad.nombre_campo%></td>
+				    <td><%= activo_especificacion_ci.valor_cadena %></td>
+				    <td><%= activo_especificacion_ci.valor_logico %></td>
+				    <td><%= activo_especificacion_ci.valor_numerico %></td>
+				    <td><%= activo_especificacion_ci.valor_real %></td>			    
+				    <td><%= link_to 'Editar', edit_activo_especificacion_ci_path(activo_especificacion_ci),:class=>"colorbox" %> |
+				    <%= link_to 'Borrar', activo_especificacion_ci, method: :delete, data: { confirm: 'Seguro de Eliminar?' } %></td>
+				  </tr>
+				<% end %>
+				</table>
+				 </div>
+  				</div>  
+			</div>
+			
+			<div id="tabs-3">
+				<div class="content-box">
+			    <div class="content-header"><h3>
+			    <div class="title-box">
+			          Datos de Trabajo
+			        </div>  
+			        <div class="btns-box"> 
+			          <button onClick="fnAgregarDatoTrabajo();">Agregar</button>                   
+			        </div></h3></div>
+			        <div class="content">
+				<table class="table">		
+				<thead>	 	  
+				  <tr>
+				    <th>Tipo</th>
+				    <th>Fecha</th>
+				    <th>Fuente</th>
+				    <th>Resumen</th>			    
+				    <th>Acciones</th>			    
+				  </tr>		
+				  </thead>	 	
+				<% @activo_dato_trabajo_cis.each do |activo_dato_trabajo_ci| %>
+				  <tr  class="<%= cycle("even", "odd") %>">
+				    <td><%= activo_dato_trabajo_ci.tipo.nombre %></td>
+				    <td><%= activo_dato_trabajo_ci.fecha %></td>
+				    <td><%= activo_dato_trabajo_ci.fuente.nombre %></td>
+				    <td><%= activo_dato_trabajo_ci.resumen %></td>
+				    <td><%= link_to 'Editar', edit_activo_dato_trabajo_ci_path(activo_dato_trabajo_ci),:class=>"colorbox" %> |
+				    <%= link_to 'Borrar', activo_dato_trabajo_ci, method: :delete, data: { confirm: 'Seguro de Eliminar?' } %></td>
+				  </tr>
+				<% end %>
+				</table>
+				 </div>
+  				</div>  
+			</div>
+			
+			<div id="tabs-4">
+				<div class="content-box">
+			    <div class="content-header"><h3>
+			    <div class="title-box">
+			          Relaciones CI
+			        </div>  
+			        <div class="btns-box"> 
+			          <button onClick="fnAgregarRelacion();">Agregar</button>                   
+			        </div></h3></div>
+			        <div class="content">			        	
+					<table class="table">
+				<thead>	 
+					<tr>
+				    <th>Código</th>
+				    <th>Nombre</th>
+				    <th>Descripcion</th>
+				    <th>Nombre producto</th>
+				    <th>Modelo versión</th>
+				    <th>Fabricador</th>
+				    <th>Proveedor</th>
+				    <th>Acciones</th>		    
+				  </tr>
+				</thead>	 
+				<% @activo_relacion_cis.each do |relacion| %>
+				  <tr  class="<%= cycle("even", "odd") %>">
+				    <td><%= relacion.ci_hijo.codigo_inventario %></td>
+				    <td><%= relacion.ci_hijo.nombre %></td>
+				    <td><%= relacion.ci_hijo.descripcion %></td>
+				    <td><%= relacion.ci_hijo.nombre_producto %></td>
+				    <td><%= relacion.ci_hijo.modelo_version %></td>
+				    <td><%= relacion.ci_hijo.fabricador.nombre_comercial %></td>
+				    <td><%= relacion.ci_hijo.proveedor.nombre_comercial %></td>
+				    <td><%= link_to 'Editar', edit_activo_relacion_ci_path(relacion),:class=>"colorbox" %> |
+				    <%= link_to 'Borrar', relacion, method: :delete, data: { confirm: 'Seguro de Eliminar?' } %>
+				    </td>
+				  </tr>
+				<% end %>
+				</table>
+				    </div>
+  				</div>  
+			</div>
+			
+		</div>
+  </div>
+</div>
+
+<script>
+
+$(document).ready(function($) {       
+  $( "#tabs" ).tabs();
+  $('.colorbox').colorbox();
+}); 
+
+
+function fnAgregarRelacion(){
+  $.colorbox({href:"/activo/relacion_cis/new?ci_id=<%= @activo_ci.id %>"});
+}
+
+function fnAgregarCiclo(){
+  $.colorbox({href:"/activo/ciclo_vidas/new?ci_id=<%= @activo_ci.id %>"});
+}
+
+function fnAgregarPropiedad(){
+  $.colorbox({href:"/activo/especificacion_cis/new?ci_id=<%= @activo_ci.id %>"});
+}
+
+function fnAgregarDatoTrabajo(){
+  $.colorbox({href:"/activo/dato_trabajo_cis/new?ci_id=<%= @activo_ci.id %>"});
+}
+
+</script>

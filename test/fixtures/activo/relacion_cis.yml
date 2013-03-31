@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  ci_id: 1
+  relacion_id: 1
+  ci_relacion_id: 1
+  fecha: 2012-10-08
+  estado_id: 1
+
+two:
+  ci_id: 1
+  relacion_id: 1
+  ci_relacion_id: 1
+  fecha: 2012-10-08
+  estado_id: 1
