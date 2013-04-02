@@ -22,6 +22,7 @@ class Activo::CategoriaCisController < ApplicationController
   def new
     @activo_categoria_ci = Activo::CategoriaCi.new
     load_data
+    @pr_categoria_padre = params[:prCategoriaPadreId]
 
     respond_to do |format|
       format.html # new.html.erb

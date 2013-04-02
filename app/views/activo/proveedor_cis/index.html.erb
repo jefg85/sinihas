@@ -1,48 +1,109 @@
 <div>
-      <div class="content-box">
-        <div class="content-header"><h3>
-        <div class="title-box">
-               Lista de Proveedores 
-        </div>  
-        <div class="btns-box">
-          <button onclick="window.location='/activo/proveedor_cis/new'">
-                  Agregar
-                </button>      
-                <button onclick="window.open('/activo/proveedor_cis/report', '_blank');">Reporte</button>                 
-        </div></h3></div>
-        <div class="content">
-          <table class="table" cellspacing="0" id="table" >    
-        <thead> 
-              <tr>
-  <tr>
-    <th>Sigla</th>
-    <th>Nombre comercial</th>    
-    <th>Tipo proveedor</th>
-    <th>Acciones</th>    
-  </tr>
-
-<% @activo_proveedor_cis.each do |activo_proveedor_ci| %>
-  <tr  class="<%= cycle("even", "odd") %>">
-    <td><%= activo_proveedor_ci.sigla %></td>
-    <td><%= activo_proveedor_ci.nombre_comercial %></td>    
-    <td><%= activo_proveedor_ci.tipo.nombre %></td>
-    <td><%= link_to 'Editar', edit_activo_proveedor_ci_path(activo_proveedor_ci) %> |
-        <%= link_to 'Borrar', activo_proveedor_ci, method: :delete, data: { confirm: 'Seguro de eliminar?' } %></td>
-  </tr>
-<% end %>
-</tbody>
-            </table>
-
+	<div class="content-box">
+    	<div class="content-header">
+    		<h3>
+        		<div class="title-box">
+        			<img alt="Proveedor" src="/assets/icon/supplier.png">
+               			Lista de Proveedores 
+        		</div>  
+        		<div class="btns-box">
+        			<button onclick="window.location='/activo/proveedor_cis/new'">
+            			Agregar
+            		</button>      
+            		<button onclick="window.open('/activo/proveedor_cis/report', '_blank');">Reporte</button>                 
+        		</div>
+        	</h3>
         </div>
-      </div>
+   		<div class="content">
+<table class="table" cellspacing="0" id="table" >    
+	<thead> 
+    	<tr>
+			<th style="width: 10%">Nit</th>
+		    <th style="width: 30%">Nombre comercial</th>    
+		    <th style="width: 18%">Tipo proveedor</th>
+		    <th style="width: 16%">F. Inicio Vigencia</th>
+		    <th style="width: 16%">F. Fin Vigencia</th>
+		    <th style="width: 10%">Acciones</th>    
+		</tr>
+		<tr>
+  			<form class="form-search" action="/activo/proveedor_cis">
+			<td>
+				<input type="text" id="prBuscarNit" name="prBuscarNit" class="search-query" placeholder="" size="2"/>	
+			</td>
+			<td>
+				<input type="text" id="prBuscarNombre" name="prBuscarNombre" class="search-query" placeholder="" size="33"/>	
+			</td>
+			<td>
+				<select id="prTipoProveedor" name="prTipoProveedor" class="search-query" style="width: 130px;">
+					<option value="" selected="true"></option>
+				  <% @tipo_proveedor_id.each do |tipo_proveedor| %>
+  					<option value="<%= tipo_proveedor.id %>"><%= tipo_proveedor.nombre %>"</option>  
+  				  <% end %>					
+				</select>
+			</td>
+			<td>
+				<input type="text" id="prBuscarFechaInicioVig" name="prBuscarFechaInicioVig" value="" class="search-query" placeholder="" size="10"/>	
+			</td>
+			<td>
+				<input type="text" id="prBuscarFechaFinVig" name="prBuscarFechaFinVig" value="" class="search-query" placeholder="" size="10"/>	
+			</td>
+			<td>
+				<a href="javascript:void(0)" onclick="javascript:fnBuscar()"><img alt="Filtro" src="/assets/icon/filter.png"></a>
+			</td>
+			</form>
+  		</tr>
+	</thead>
+	<tbody>
+	  <% @activo_proveedor_cis.each do |activo_proveedor_ci| %>
+  		<tr class="<%= cycle("even", "odd") %>">
+    		<td><%= activo_proveedor_ci.nit %></td>
+    		<td><%= activo_proveedor_ci.nombre_comercial %></td>    
+    		<td><%= activo_proveedor_ci.tipo.nombre %></td>
+    		<td><%= activo_proveedor_ci.fecha_inicio_vigencia %></td>
+    		<td><%= activo_proveedor_ci.fecha_fin_vigencia %></td>
+    		<td>
+    			<%= link_to image_tag("/assets/icon/edit.png"), edit_activo_proveedor_ci_path(activo_proveedor_ci) %> |
+        		<%= link_to image_tag("/assets/icon/delete.png"), method: :delete, data: { confirm: 'Seguro de eliminar?' } %>
+        	</td>
+  		</tr>
+	  <% end %>
+	</tbody>
+</table>
+</div>
+</div>
 </div>
 
 <script type="text/javascript">
-
-   // create the grid
-    var grid = new Ext.grid.TableGrid("table", {
-    with:800,
-      stripeRows: true // stripe alternate rows
-    });
-    grid.render();
+	var doc = $(document); 
+    doc.ready(iniEvento);
+    
+    function iniEvento(){
+    	cargarValor();
+    	fnInitTextDatePicker();
+    }
+    
+	function fnInitTextDatePicker(){
+        $("#prBuscarFechaInicioVig").datepicker({
+        	onClose: function( selectedDate ) {
+				$( "#prBuscarFechaFinVig" ).datepicker( "option", "minDate", selectedDate );
+			}
+        });
+        $("#prBuscarFechaFinVig").datepicker({
+        	onClose: function( selectedDate ) {
+				$("#prBuscarFechaInicioVig").datepicker( "option", "maxDate", selectedDate );
+			}
+        });
+    }
+    
+    function cargarValor(){
+    	$("#prBuscarNit").val("<%= @pr_buscar_nit %>");
+    	$("#prBuscarNombre").val("<%= @pr_buscar_nombre %>");
+    	$("#prTipoProveedor").val("<%= @pr_tipo_proveedor %>");
+    	$("#prBuscarFechaInicioVig").val("<%= @pr_buscar_fecha_inicio_vig %>");
+    	$("#prBuscarFechaFinVig").val("<%= @pr_buscar_fecha_fin_vig %>");
+    }
+    
+	function fnBuscar(){
+		document.forms[0].submit();
+  	}
 </script>

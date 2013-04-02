@@ -58,14 +58,60 @@ class Activo::FabricadorCisController < ApplicationController
   # GET /activo/fabricador_cis
   # GET /activo/fabricador_cis.json
   def index
+    squery = ""
     
-     if !params[:prBuscar].nil? && !params[:prBuscar].blank?
-      @activo_fabricador_cis = Activo::FabricadorCi.where("nombre_comercial like '%#{params[:prBuscar]}%'")
+    if !params[:prBuscarId].nil? && !params[:prBuscarId].blank?
+      squery = "id = #{params[:prBuscarId]}"   
+    end
+    
+    if !params[:prBuscarNombre].nil? && !params[:prBuscarNombre].blank?
+      if !squery.blank?
+        squery = squery + " AND nombre_comercial LIKE '%#{params[:prBuscarNombre]}%'"  
+      else
+        squery = "nombre_comercial LIKE '%#{params[:prBuscarNombre]}%'"
+      end
+    end
+    
+    if !params[:prBuscarPagina].nil? && !params[:prBuscarPagina].blank?
+      if !squery.blank?
+        squery = squery + " AND pagina_web LIKE '%#{params[:prBuscarPagina]}%'"  
+      else
+        squery = "pagina_web LIKE '%#{params[:prBuscarPagina]}%'"
+      end
+    end
+    
+    if !params[:prBuscarFechaInicioVig].nil? && !params[:prBuscarFechaInicioVig].blank?
+      if !squery.blank?
+        squery = squery + " AND fecha_inicio_vigencia >= CONVERT(date,'#{params[:prBuscarFechaInicioVig].to_date}',103)"
+      else
+        squery = "fecha_inicio_vigencia >= CONVERT(date,'#{params[:prBuscarFechaInicioVig].to_date}',103)"  
+      end
+    end
+    
+    if !params[:prBuscarFechaFinVig].nil? && !params[:prBuscarFechaFinVig].blank?
+      if !squery.blank?
+        squery = squery + " AND fecha_fin_vigencia <= CONVERT(date,'#{params[:prBuscarFechaFinVig].to_date}',103)"  
+      else
+        squery = "fecha_fin_vigencia <= CONVERT(date,'#{params[:prBuscarFechaFinVig].to_date}',103)"  
+      end
+    end
+        
+    if !squery.blank?
+      @activo_fabricador_cis = Activo::FabricadorCi.where(squery).page(params[:page]).per(5)
+      @pr_buscar_id = params[:prBuscarId]
+      @pr_buscar_nombre = params[:prBuscarNombre]
+      @pr_buscar_pagina = params[:prBuscarPagina]
+      @pr_buscar_fecha_inicio_vig = params[:prBuscarFechaInicioVig]
+      @pr_buscar_fecha_fin_vig = params[:prBuscarFechaFinVig]
     else
-      @activo_fabricador_cis = Activo::FabricadorCi.all
+      @activo_fabricador_cis = Activo::FabricadorCi.page(params[:page]).per(5)
+      @pr_buscar_id = ""
+      @pr_buscar_nombre = ""
+      @pr_buscar_pagina = ""
+      @pr_buscar_fecha_inicio_vig = ""
+      @pr_buscar_fecha_fin_vig = ""
     end 
     
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @activo_fabricador_cis }

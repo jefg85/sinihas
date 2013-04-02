@@ -14,8 +14,61 @@ class Activo::ProveedorCisController < ApplicationController
   # GET /activo/proveedor_cis
   # GET /activo/proveedor_cis.json
   def index
-    @activo_proveedor_cis = Activo::ProveedorCi.all
-
+    squery = ""
+    
+    if !params[:prBuscarNit].nil? && !params[:prBuscarNit].blank?
+      squery = "nit LIKE '%#{params[:prBuscarNit]}%'"   
+    end
+    
+    if !params[:prBuscarNombre].nil? && !params[:prBuscarNombre].blank?
+      if !squery.blank?
+        squery = squery + " AND nombre_comercial LIKE '%#{params[:prBuscarNombre]}%'"  
+      else
+        squery = "nombre_comercial LIKE '%#{params[:prBuscarNombre]}%'"
+      end
+    end
+    
+    if !params[:prTipoProveedor].nil? && !params[:prTipoProveedor].blank?
+      if !squery.blank?
+        squery = squery + " AND tipo_proveedor_id = #{params[:prTipoProveedor]}"  
+      else
+        squery = "tipo_proveedor_id = #{params[:prTipoProveedor]}"
+      end
+    end
+    
+    if !params[:prBuscarFechaInicioVig].nil? && !params[:prBuscarFechaInicioVig].blank?
+      if !squery.blank?
+        squery = squery + " AND fecha_inicio_vigencia >= CONVERT(date,'#{params[:prBuscarFechaInicioVig].to_date}',103)"
+      else
+        squery = "fecha_inicio_vigencia >= CONVERT(date,'#{params[:prBuscarFechaInicioVig].to_date}',103)"  
+      end
+    end
+    
+    if !params[:prBuscarFechaFinVig].nil? && !params[:prBuscarFechaFinVig].blank?
+      if !squery.blank?
+        squery = squery + " AND fecha_fin_vigencia <= CONVERT(date,'#{params[:prBuscarFechaFinVig].to_date}',103)"  
+      else
+        squery = "fecha_fin_vigencia <= CONVERT(date,'#{params[:prBuscarFechaFinVig].to_date}',103)"  
+      end
+    end
+    
+    if !squery.blank?
+      @activo_proveedor_cis = Activo::ProveedorCi.where(squery).page(params[:page]).per(5)
+      @pr_buscar_nit = params[:prBuscarNit]
+      @pr_buscar_nombre = params[:prBuscarNombre]
+      @pr_tipo_proveedor = params[:prTipoProveedor] 
+      @pr_buscar_fecha_inicio_vig = params[:prBuscarFechaInicioVig]
+      @pr_buscar_fecha_fin_vig = params[:prBuscarFechaFinVig]
+    else
+      @activo_proveedor_cis = Activo::ProveedorCi.page(params[:page]).per(5)  
+      @pr_buscar_nit = ""
+      @pr_buscar_nombre = ""
+      @pr_tipo_proveedor = ""
+      @pr_buscar_fecha_inicio_vig = ""
+      @pr_buscar_fecha_fin_vig = ""
+    end
+    load_data
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @activo_proveedor_cis }

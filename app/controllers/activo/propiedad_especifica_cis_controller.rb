@@ -51,13 +51,62 @@ class Activo::PropiedadEspecificaCisController < ApplicationController
   # GET /activo/propiedad_especifica_cis
   # GET /activo/propiedad_especifica_cis.json
   def index
+    squery = ""
+      
+    if !params[:prBuscarNombre].nil? && !params[:prBuscarNombre].blank?
+      squery = "nombre_campo LIKE '%#{params[:prBuscarNombre]}%'"
+    end
     
-    if !params[:prBuscar].nil? && !params[:prBuscar].blank?
-      @activo_propiedad_especifica_cis = Activo::PropiedadEspecificaCi.where("nombre_campo like '%#{params[:prBuscar]}%'")
+    if !params[:prBuscarValor].nil? && !params[:prBuscarValor].blank?
+      if !squery.blank?
+        squery = squery + " AND valor_string LIKE '%#{params[:prBuscarValor]}%'"  
+      else
+        squery = "valor_string LIKE '%#{params[:prBuscarValor]}%'"
+      end
+    end
+    
+    if !params[:prBuscarVisualizar].nil? && !params[:prBuscarVisualizar].blank?
+      if !squery.blank?
+        squery = squery + " AND visualizar = #{params[:prBuscarVisualizar]}"  
+      else
+        squery = "visualizar = #{params[:prBuscarVisualizar]}"
+      end
+    end
+    
+    if !params[:prBuscarFechaInicioVig].nil? && !params[:prBuscarFechaInicioVig].blank?
+      if !squery.blank?
+        squery = squery + " AND fecha_inicio_vigencia >= CONVERT(date,'#{params[:prBuscarFechaInicioVig].to_date}',103)"
+      else
+        squery = "fecha_inicio_vigencia >= CONVERT(date,'#{params[:prBuscarFechaInicioVig].to_date}',103)"  
+      end
+    end
+    
+    if !params[:prBuscarFechaFinVig].nil? && !params[:prBuscarFechaFinVig].blank?
+      if !squery.blank?
+        squery = squery + " AND fecha_fin_vigencia <= CONVERT(date,'#{params[:prBuscarFechaFinVig].to_date}',103)"  
+      else
+        squery = "fecha_fin_vigencia <= CONVERT(date,'#{params[:prBuscarFechaFinVig].to_date}',103)"  
+      end
+    end
+    
+    if !squery.blank?
+      @activo_propiedad_especifica_cis = Activo::PropiedadEspecificaCi.where(squery).page(params[:page]).per(5)
+      @pr_buscar_nombre = params[:prBuscarNombre]
+      @pr_tipo_campo = params[:prBuscarTipoCampo]
+      @pr_valor = params[:prBuscarValor]
+      @pr_visualizar = params[:prBuscarVisualizar]
+      @pr_buscar_fecha_inicio_vig = params[:prBuscarFechaInicioVig]
+      @pr_buscar_fecha_fin_vig = params[:prBuscarFechaFinVig]
     else
-      @activo_propiedad_especifica_cis = Activo::PropiedadEspecificaCi.all
+      @activo_propiedad_especifica_cis = Activo::PropiedadEspecificaCi.where("visualizar = 1").page(params[:page]).per(5)
+      @pr_buscar_nombre = ""
+      @pr_tipo_campo = ""
+      @pr_valor = ""
+      @pr_visualizar = ""
+      @pr_buscar_fecha_inicio_vig = ""
+      @pr_buscar_fecha_fin_vig = ""
     end 
-
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @activo_propiedad_especifica_cis }

@@ -1,6 +1,6 @@
 # encoding: utf-8
 class Activo::FabricadorCi < ActiveRecord::Base
-  attr_accessible :fecha_fin_vigencia, :fecha_inicio_vigencia, :nombre_comercial, :pagina_web, :url_logo
+  attr_accessible :id, :fecha_fin_vigencia, :fecha_inicio_vigencia, :nombre_comercial, :pagina_web, :url_logo
   
   audit(:create,:update, :destroy)
   

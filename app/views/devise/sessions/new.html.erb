@@ -11,23 +11,29 @@
                 	<h3>Autenticaci&oacute;n</h3>
                 
                 </div>
-                
-                	<p>Ingrese los datos para iniciar sesi&oacute;n:</p>
-                            
+                	      
                 	<div class="lileft">
-                        <label>Usuario</label>
-                        <%= f.text_field :usuario %>
+                		<div style="margin-top: 20px; margin-left: 64.5px">
+                			<a>
+					   	 		<img alt="Logo SINIHAS" src="/assets/logosinihas.jpg">
+					   		</a>
+                		</div>
                     </div>
                     
 					<div class="liright">
+						<p>Ingrese los datos para iniciar sesi&oacute;n:</p>
+                    
+						<label>Usuario</label>
+                        <%= f.text_field :usuario %>
+                        
                         <label>Contrase&ntilde;a</label>                    
                         <%= f.password_field :password %>
+                        
+                        <p class="link">
+                    		<%= f.submit "Entrar" %>
+                    	</p>
                     </div>
                     
-                    <p class="link">
-                    	<%= f.submit "Entrar" %>
-                    </p>
-                                        
                     <div class="clear"></div>
                 	            
             </div>

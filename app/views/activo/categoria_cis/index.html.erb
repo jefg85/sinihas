@@ -4,59 +4,67 @@
 
 
 <div>
-      <div class="content-box">
-        <div class="content-header"><h3>
-        <div class="title-box">
-               Categorías 
-        </div>  
-        <div class="btns-box">        	
-        		<button onclick="fnEditar();">
-                  Editar
-                </button>  
-        	
-          		<button onclick="window.location='/activo/categoria_cis/new'">
-                  Agregar
-                </button>      
-        </div></h3></div>
+	<div class="content-box">
+    	<div class="content-header">
+    		<h3>
+        		<div class="title-box">
+               		<img alt="Categoria" src="/assets/icon/category.png">
+               		Categorías 
+        		</div>  
+        		<div class="btns-box">        	
+        			<button onclick="fnEditar();">Editar</button>  
+        			<button onclick="fnAgregar();">Agregar</button>      
+        		</div>
+        	</h3>
+        </div>
         <div class="content">
-         <div id="demo1" class="demo" >
-          <ul>
-            <% @activo_categoria_cis.each do |activo_categoria_ci| %>
-              <% if activo_categoria_ci.nivel_i_id.nil? %>
-                <li id="<%= activo_categoria_ci.id %>">      
-                  <a href="#"><%= activo_categoria_ci.descripcion_corta %></a>
-                  <ul>
-                  <% @activo_categoria_cis.each do |hijo| %>
-                    <% if hijo.nivel_i_id == activo_categoria_ci.id %>
-                      <li id="<%= hijo.id %>">      
-                        <a href="#"><%= hijo.descripcion_corta %></a>
-                          <ul>
-                          <% @activo_categoria_cis.each do |hijo2| %>
-                            <% if hijo2.nivel_i_id == hijo.id %>
-                              <li id="<%= hijo2.id %>">      
-                                <a href="#"><%= hijo2.descripcion_corta %></a>
-                              </li>
-                            <% end %>
-                          <% end %>
-                          </ul>
-                      </li>
-                    <% end %>
-                  <% end %>
-                  </ul>
-                </li>
-              <% end %>
-            <% end %>
-          </ul>
-        </div>
-
-        </div>
-      </div>
-      <script>
-      	function fnBuscar(){
+        	<div id="demo1" class="demo" >
+          		<ul>
+            	 <% @activo_categoria_cis.each do |activo_categoria_ci| %>
+              	  <% if activo_categoria_ci.nivel_i_id.nil? %>
+                	<li id="<%= activo_categoria_ci.id %>">      
+                  		<a href="#"><%= activo_categoria_ci.descripcion_corta %></a>
+                  		<ul>
+                  		 <% @activo_categoria_cis.each do |hijo| %>
+                    	  <% if hijo.nivel_i_id == activo_categoria_ci.id %>
+                      		<li id="<%= hijo.id %>">      
+                        		<a href="#"><%= hijo.descripcion_corta %></a>
+                          		<ul>
+                          	 <% @activo_categoria_cis.each do |hijo2| %>
+                              <% if hijo2.nivel_i_id == hijo.id %>
+                              		<li id="<%= hijo2.id %>">      
+                                		<a href="#"><%= hijo2.descripcion_corta %></a>
+                              		</li>
+                              <% end %>
+                             <% end %>
+                          		</ul>
+                      		</li>
+                    	  <% end %>
+                         <% end %>
+                  	    </ul>
+                	</li>
+              	  <% end %>
+                 <% end %>
+          		</ul>
+        	</div>
+		</div>
+     </div>
+	<script>
+    	function fnBuscar(){
       		var buscar = $('#prBuscar').val();
       		window.location='/activo/categoria_cis?prBuscar='+buscar;
       	}
-
+      	
+      	function fnAgregar(){
+      		var id = $('#demo1').jstree('get_selected').attr('id');
+      		var prCategoriaPadreId = 0;
+      		
+      		if(id != undefined){
+      			prCategoriaPadreId = id;
+      		}
+      		window.location='/activo/categoria_cis/new?prCategoriaPadreId=' + prCategoriaPadreId; 
+      	} 
+      		
         function fnEditar(){
           var id = $('#demo1').jstree('get_selected').attr('id');
           if(id == undefined){
@@ -67,25 +75,21 @@
           }
 
         }  
-
-      </script>
-
+	</script>
 
 <script type="text/javascript" class="source below">
-$(function () {
-  // TO CREATE AN INSTANCE
-  // select the tree container using jQuery
-  $("#demo1")
-    // call `.jstree` with the options object
-    .jstree({
-      // the `plugins` array allows you to configure the active plugins on this instance
-      "plugins" : ["themes","html_data","ui","crrm","hotkeys"],
-      // each plugin you have included can have its own config object
-      "core" : { "initially_open" : [ "phtml_1" ] }
-      // it makes sense to configure a plugin only if overriding the defaults
-    })
-
-});
+	$(function () {
+	 	// TO CREATE AN INSTANCE
+	  	// select the tree container using jQuery
+	  	$("#demo1")
+	    // call `.jstree` with the options object
+	    	.jstree({
+	      	// the `plugins` array allows you to configure the active plugins on this instance
+	      	"plugins" : ["themes","html_data","ui","crrm","hotkeys"],
+	      	// each plugin you have included can have its own config object
+	      	"core" : { "initially_open" : [ "phtml_1" ] }
+	      	// it makes sense to configure a plugin only if overriding the defaults
+		})
+	});
 </script>
-
 </div>
