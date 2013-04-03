@@ -19,6 +19,7 @@
 		<td><%= f.label :seccion_unidad_id,"Sección:" %></td>		
 		<td><%= f.collection_select :seccion_unidad_id, @seccion, :id, :nombre,  {:include_blank => true}  %></td>		
 	</tr>
+	<% if !@peticion_peticion_ti.new_record? %>
 	<tr>
 		<td><%= f.label :tipo_peticion_id,"Tipo:" %></td>		
 		<td><%= f.collection_select :tipo_peticion_id, @tipo, :id, :nombre,  {:include_blank => true}  %></td>		
@@ -31,5 +32,6 @@
 		<td><%= f.label :estado_id %></td>		
 		<td><%= f.collection_select :estado_id, @estado, :id, :nombre,  {:include_blank => true}  %></td>		
 	</tr>
+	<% end %>
 </table> 
 

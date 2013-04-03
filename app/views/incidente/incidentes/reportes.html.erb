@@ -1,0 +1,30 @@
+<div>
+      <div class="content-box">
+        <div class="content-header">
+        <h3>
+        <div class="title-box">
+              Reportes de Incidentes 
+        </div>  
+       </h3>
+        </div>
+        <div class="content">
+          <table class="table" cellspacing="0" id="table" >    
+		<thead>	  
+  <tr>
+    <th>Nombre</th>        
+    <th>Acciones</th>    
+  </tr>
+</thead>
+<tbody>
+<% @reportes.each do |r| %>
+  <tr  class="<%= cycle("even", "odd") %>">
+    <td><%= r["nombre"] %></td>    
+    <td><a href="<%= r["url"] %>">Ir</a></td>
+  </tr>
+<% end %>
+</tbody>
+</table>
+
+        </div>
+      </div>
+</div>

@@ -14,7 +14,23 @@ SINIHAS::Application.routes.draw do
   
   get '/activo/proveedor_cis/report'
   get '/activo/fabricador_cis/report' 
-  get '/incidente/incidentes/report' 
+  
+  get '/incidente/incidentes/report_tipo'
+  get '/incidente/incidentes/report_tipo_resumen'
+  get '/incidente/incidentes/report_estado'
+  get '/incidente/incidentes/report_estado_resumen'
+  get '/incidente/incidentes/report_actividades_usuario'
+  get '/incidente/incidentes/report_actividades_estado'
+  get '/incidente/incidentes/reportes' 
+  
+  get '/incidente/incidentes/rpt_tipo'
+  get '/incidente/incidentes/rpt_tipo_resumen'
+  get '/incidente/incidentes/rpt_estado'
+  get '/incidente/incidentes/rpt_estado_resumen'
+  get '/incidente/incidentes/rpt_actividades_usuario'
+  get '/incidente/incidentes/rpt_actividades_estado'
+  
+   
   get '/activo/cis/report' 
   get '/peticion/peticion_tis/report' 
   get '/peticion/servicio_tis/report'   

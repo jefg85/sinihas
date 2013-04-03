@@ -1,0 +1,45 @@
+<form class="form-search" action="report_tipo">
+<div>
+  <div class="content-box">
+    <div class="content-header">
+    <h3>
+    <div class="title-box">
+           Reporte de Incidentes por Tipo
+    </div>  
+    <div class="btns-box">       
+    	<input type="submit" value="Lanzar">
+    </div></h3>
+    </div>
+    <div class="content">
+     	<table class="form-table">  
+     	
+     	<tr>
+     	<td><label>Tipo:</label></td>
+     	<td colspan="3">
+     	<select name="estado" style="width:98%">
+			<option value=""></option>
+			<%@tipo.each do |i|%>
+			<option value="<%= i.id%>"><%= i.descripcion_corta%></option>
+			<%end%>
+		</select>     	
+     	</td>
+     	</tr>  
+     	
+  <tr>
+    <td><label>Fecha Inicio</label></td>
+    <td><input type="text" id="inicio" name="inicio"></td>
+    <td><label>Fecha Fin</label></td>
+    <td><input type="text" id="fin" name="fin"></td>
+  </tr> 
+</table> 
+ <script>
+    $(function() {
+        $( "#inicio" ).datepicker();
+        $( "#fin" ).datepicker();
+    });
+    </script>     	
+     	
+    </div>
+  </div>
+</div>
+</form>
