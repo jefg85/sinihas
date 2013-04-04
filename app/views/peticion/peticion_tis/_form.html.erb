@@ -1,7 +1,9 @@
 <table class="form-table">
 	<tr>	
 		<td><%= f.label :nombre_peticion_ti,"Nombre:" %></td>
-		<td colspan="3"><%= f.text_field :nombre_peticion_ti,:style=> "width:96%" %></td>
+		<td><%= f.text_field :nombre_peticion_ti,:style=> "width:96%" %></td>
+		<td><%= f.label :tipo_peticion_id,"Tipo:" %></td>		
+		<td><%= f.collection_select :tipo_peticion_id, @tipo, :id, :nombre,  {:include_blank => true}  %></td>
 	</tr>
 	<tr>
 		<td><%= f.label :descripcion,"Descripción:" %></td>
@@ -20,9 +22,7 @@
 		<td><%= f.collection_select :seccion_unidad_id, @seccion, :id, :nombre,  {:include_blank => true}  %></td>		
 	</tr>
 	<% if !@peticion_peticion_ti.new_record? %>
-	<tr>
-		<td><%= f.label :tipo_peticion_id,"Tipo:" %></td>		
-		<td><%= f.collection_select :tipo_peticion_id, @tipo, :id, :nombre,  {:include_blank => true}  %></td>		
+	<tr>				
 		<td><%= f.label :prioridad_id,"Prioridad:" %></td>		
 		<td><%= f.collection_select :prioridad_id, @prioridad, :id, :nombre,  {:include_blank => true}  %></td>		
 	</tr>

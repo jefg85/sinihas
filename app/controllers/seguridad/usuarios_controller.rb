@@ -66,7 +66,7 @@ def agregarrol
   # GET /seguridad/usuarios
   # GET /seguridad/usuarios.json
   def index
-    @seguridad_usuarios = Seguridad::Usuario.all
+    @seguridad_usuarios = Seguridad::Usuario.order('usuario')
 
     respond_to do |format|
       format.html # index.html.erb

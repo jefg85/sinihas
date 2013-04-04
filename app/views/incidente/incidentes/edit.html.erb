@@ -60,7 +60,7 @@
 <script type="text/javascript">
     
 function fnAgregar(){
-  $.colorbox({href:"/incidente/actividad_incidentes/new?incidente_id=<%= @incidente_incidente.id %>",height:"50%",width:"70%"});
+  $.colorbox({href:"/incidente/actividad_incidentes/new?incidente_id=<%= @incidente_incidente.id %>"});
 }
 
 function fnQuitar(id){
@@ -73,7 +73,7 @@ function fnQuitar(id){
 }
 
 $(document).ready(function($) {       
-  $('.colorbox').colorbox({height:"50%",width:"70%"});
+  $('.colorbox').colorbox();
 }); 
 
 

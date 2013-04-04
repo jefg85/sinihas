@@ -1,33 +1,34 @@
 <table class="form-table">
 	<tr>
 		<td><%= f.label :fecha_incidente,"Fecha Incidente:" %></td>
-		<td><%= f.text_field :fecha_incidente %></td>
+		<td><%= f.text_field :fecha_incidente,:readOnly=>"readOnly" %></td>
 		<td><%= f.label :fecha_informe ,"Fecha Informe:"%></td>
-		<td><%= f.text_field :fecha_informe %></td>
-	</tr>
-	<tr>
-		<td><%= f.label :modo_id,"Modo:" %></td>
-		<td><%= f.text_field :modo_id %></td>		
-	</tr>
+		<td><%= f.text_field :fecha_informe ,:readOnly=>"readOnly" %></td>
+	</tr>	
 	<tr>		
 		<td><%= f.label :resumen ,"Resumen:"%></td>		
-		<td colspan="3"><%= f.text_area :resumen ,:rows => 2,:style=>"width:96%;height:100px"%></td>		
+		<td colspan="3"><%= f.text_field :resumen ,:style=>"width:96%;"%></td>		
 	</tr>
 	<tr>
-		<td><%= f.label :descripcion,"Descripción:" %></td>
-		<td><%= f.text_field :descripcion %></td>
+		<td><%= f.label :descripcion,"Descripción:" %></td>		
+		<td colspan="3"><%= f.text_area :descripcion ,:rows => 2,:style=>"width:96%;height:100px"%></td>
+	</tr>
+	<tr>
+	<td><%= f.label :tipo_incidente_id,"Tipo Incidente:" %></td>
+		<td><%= f.collection_select :tipo_incidente_id, @tipo_incidente, :id, :descripcion_corta,  {:include_blank => true}  %></td>
 		<td><%= f.label :ci_id,"CI:" %></td>
 		<td><%= f.collection_select :ci_id, @ci, :id, :nombre,  {:include_blank => true}  %></td>
 	</tr>
+	
 	<tr>
-		<td><%= f.label :direccion_division,"Dirección división:" %></td>
-		<td><%= f.text_field :direccion_division %></td>
-		<td><%= f.label :departamento_oficina,"Departamento Oficina:" %></td>
-		<td><%= f.text_field :departamento_oficina %></td>
+		<td><%= f.label :direccion_division,"División:" %></td>
+		<td><%= f.collection_select :direccion_division, @direccion_division_id, :id, :nombre,  {:include_blank => true}  %></td>
+		<td><%= f.label :departamento_oficina,"Oficina:" %></td>
+		<td><%= f.collection_select :departamento_oficina, @departamento_oficina_id, :id, :nombre,  {:include_blank => true}  %></td>
 	</tr>
 	<tr>
 		<td><%= f.label :seccion_unidad,"Sección:" %></td>
-		<td><%= f.text_field :seccion_unidad %></td>
+		<td><%= f.collection_select :seccion_unidad, @seccion_unidad_id, :id, :nombre,  {:include_blank => true}  %></td>
 		<td><%= f.label :grupo_id,"Grupo:" %></td>		
 		<td><%= f.collection_select :grupo_id, @catalogo_grupo, :id, :nombre,  {:include_blank => true}  %></td>
 	</tr>
@@ -41,10 +42,8 @@
 	<tr>
 		<td><%= f.label :informado_por,"Informado por:" %></td>
 		<td><%= f.hidden_field :informado_por %>
-		<input type="text" disabled="disabled" value="<%= @nombre_informado %>">
-		</td>
-		<td><%= f.label :tipo_incidente_id,"Tipo Incidente:" %></td>
-		<td><%= f.collection_select :tipo_incidente_id, @tipo_incidente, :id, :descripcion_corta,  {:include_blank => true}  %></td>		
+		<input type="text" disabled="disabled" style="width:96%" value="<%= @nombre_informado %>">
+		</td>				
 	</tr>
 	<tr>
 		<td><%= f.label :resolucion,"Resolución:" %></td>
@@ -60,6 +59,6 @@
  <script>
     $(function() {
         $( "#incidente_incidente_fecha_incidente" ).datepicker();
-        $( "#incidente_incidente_fecha_informe" ).datepicker();
+        //$( "#incidente_incidente_fecha_informe" ).datepicker();
     });
     </script>

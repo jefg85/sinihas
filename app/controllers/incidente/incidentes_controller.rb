@@ -184,6 +184,9 @@ def load_data
   @catalogo_impacto = Catalogo::Catalogo.where("tipo_catalogo_id=4")
   @catalogo_estado = Catalogo::Catalogo.where("tipo_catalogo_id=5")
   @tipo_incidente = Incidente::TipoIncidenteCategoriaCi.all
+  @direccion_division_id = Catalogo::Catalogo.where("tipo_catalogo_id=13")
+  @departamento_oficina_id = Catalogo::Catalogo.where("tipo_catalogo_id=14")
+  @seccion_unidad_id = Catalogo::Catalogo.where("tipo_catalogo_id=15")
   @ci =Activo::Ci.all
 
   if @incidente_incidente.new_record?

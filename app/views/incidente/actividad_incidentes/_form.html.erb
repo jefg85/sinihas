@@ -2,28 +2,34 @@
 <table class="form-table">
 	<tr>
 		<td><%= f.label :fecha_inicio,"Fecha Inicio:" %></td>
-		<td><%= f.text_field :fecha_inicio %></td>
+		<td><%= f.text_field :fecha_inicio,:readOnly=>"readOnly" %></td>
 		<td><%= f.label :fecha_fin,"Fecha Fin:" %></td>
-		<td><%= f.text_field :fecha_fin %></td>
+		<td><%= f.text_field :fecha_fin,:readOnly=>"readOnly" %></td>
+	</tr>
+	<tr>		
+		<td><%= f.label :resumen ,"Resumen:"%></td>		
+		<td colspan="3"><%= f.text_field :resumen ,:style=>"width:96%;"%></td>		
+	</tr>
+	<tr>
+		<td><%= f.label :descripcion,"Descripción:" %></td>		
+		<td colspan="3"><%= f.text_area :descripcion ,:rows => 2,:style=>"width:96%;height:100px"%></td>
 	</tr>
 	<tr>
 		<td><%= f.label :ci_utilizado_id,"CI Utilizado:" %></td>
 		<td><%= f.collection_select :ci_utilizado_id, @ci_id, :id, :nombre,  {:include_blank => true}  %></td>
-		<td><%= f.label :resumen,"Resumen:" %></td>
-		<td><%= f.text_field :resumen %></td>
-	</tr>
-	<tr>
-		<td><%= f.label :descripcion,"Descripción:" %></td>
-		<td><%= f.text_field :descripcion %></td>
 		<td><%= f.label :soporte_ti_id,"Soporte TI:" %></td>
 		<td><%= f.collection_select :soporte_ti_id, @usuarios, :id, :usuario,  {:include_blank => true}  %></td>
 	</tr>
 	<tr>
-		<td><%= f.label :resolucion,"Resolución:" %></td>
-		<td><%= f.text_field :resolucion %></td>
 		<td><%= f.label :estado_id,"Estado:" %></td>
 		<td><%= f.collection_select :estado_id, @catalogo_estado, :id, :nombre,  {:include_blank => true}  %></td>
 	</tr>
+	<% if !@incidente_actividad_incidente.new_record? %>
+	<tr>
+		<td><%= f.label :resolucion,"Resolución:" %></td>
+		<td colspan="3"><%= f.text_area :resolucion ,:rows => 2,:style=>"width:96%;height:100px"%></td>
+	</tr>
+	<% end %>
 </table>    
 
 

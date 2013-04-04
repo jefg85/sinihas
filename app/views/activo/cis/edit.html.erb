@@ -138,12 +138,9 @@
 				<thead>	 
 					<tr>
 				    <th>Código</th>
-				    <th>Nombre</th>
-				    <th>Descripcion</th>
+				    <th>Nombre</th>				    
 				    <th>Nombre producto</th>
-				    <th>Modelo versión</th>
-				    <th>Fabricador</th>
-				    <th>Proveedor</th>
+				    <th>Modelo versión</th>				    
 				    <th>Acciones</th>		    
 				  </tr>
 				</thead>	 
@@ -151,11 +148,8 @@
 				  <tr  class="<%= cycle("even", "odd") %>">
 				    <td><%= relacion.ci_hijo.codigo_inventario %></td>
 				    <td><%= relacion.ci_hijo.nombre %></td>
-				    <td><%= relacion.ci_hijo.descripcion %></td>
 				    <td><%= relacion.ci_hijo.nombre_producto %></td>
-				    <td><%= relacion.ci_hijo.modelo_version %></td>
-				    <td><%= relacion.ci_hijo.fabricador.nombre_comercial %></td>
-				    <td><%= relacion.ci_hijo.proveedor.nombre_comercial %></td>
+				    <td><%= relacion.ci_hijo.modelo_version %></td>				    
 				    <td><%= link_to 'Editar', edit_activo_relacion_ci_path(relacion),:class=>"colorbox" %> |
 				    <%= link_to 'Borrar', relacion, method: :delete, data: { confirm: 'Seguro de Eliminar?' } %>
 				    </td>

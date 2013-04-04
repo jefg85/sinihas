@@ -2,15 +2,20 @@
 <table class="form-table">
 	<tr>
 		<td><%= f.label :fecha,"Fecha:" %></td>
-		<td><%= f.text_field :fecha %></td>
+		<td><%= f.text_field :fecha ,:readOnly=>"readOnly"%></td>
 		<td><%= f.label :ci_relacion_id,"CI Relación:" %></td>
-		<td><%= f.number_field :ci_relacion_id %></td>
+		<td><%= f.collection_select :ci_relacion_id, @ci_id, :id, :nombre,  {:include_blank => true}  %></td>
 	</tr>
 	<tr>
 		<td><%= f.label :relacion_id,"Relación:" %></td>
-		<td><%= f.number_field :relacion_id %></td>
+		<td><%= f.collection_select :relacion_id, @catalogo_estado, :id, :nombre,  {:include_blank => true}  %></td>
 		<td><%= f.label :estado_id,"Estado:" %></td>
-		<td><%= f.number_field :estado_id %></td>
+		<td><%= f.collection_select :estado_id, @tipo, :id, :nombre,  {:include_blank => true}  %></td>
 	</tr>
 </table>
+<script type="text/javascript">
+    $(function() {
+        $( "#activo_relacion_ci_fecha" ).datepicker();
+    });
+    </script>
 
