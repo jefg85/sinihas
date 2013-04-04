@@ -25,19 +25,15 @@
 	</tr>
 	<tr>
 		<td><%= f.label :usuarios_afectados,"Usuarios Afectados:" %></td>
-		<td><%= f.text_field :usuarios_afectados,:style=>'width:87%' %></td>
+		<td colspan="3"><%= f.text_field :usuarios_afectados,:style=>'width:96%' %></td>
+	</tr>
+	<tr>
 		<td><%= f.label :informacion_adicional,"Información Adicional:" %></td>
-		<td><%= f.text_field :informacion_adicional,:style=>'width:87%' %></td>
+		<td colspan="3"><%= f.text_field :informacion_adicional,:style=>'width:96%' %></td>
 	</tr>
 	<tr>
-		<td><%= f.label :categoria_nivel_i_id,"Nivel I:" %></td>
+		<td><%= f.label :categoria_nivel_i_id,"Categoría:" %></td>
 		<td><%= f.collection_select :categoria_nivel_i_id, @categoria_nivel_i_id, :id, :descripcion_corta,  {:include_blank => true}  %></td>
-		<td><%= f.label :categoria_nivel_ii_id,"Nivel II:" %></td>
-		<td><%= f.collection_select :categoria_nivel_ii_id, @categoria_nivel_ii_id, :id, :descripcion_corta,  {:include_blank => true}  %></td>
-	</tr>
-	<tr>
-		<td><%= f.label :categoria_nivel_iii,"Nivel III:" %></td>
-		<td><%= f.collection_select :categoria_nivel_iii, @categoria_nivel_iii, :id, :descripcion_corta,  {:include_blank => true}  %></td>
 		<td><%= f.label :nombre_producto,"Nombre Producto:" %></td>
 		<td><%= f.text_field :nombre_producto,:style=>'width:87%' %></td>
 	</tr>

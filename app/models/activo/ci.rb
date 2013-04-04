@@ -29,16 +29,16 @@ class Activo::Ci < ActiveRecord::Base
   has_many :especificaciones, :class_name => 'Activo::EspecificacionCi', :foreign_key => 'ci_id'
   has_many :datos_trabajo, :class_name => 'Activo::DatoTrabajoCi', :foreign_key => 'ci_id'
   
-  validates_presence_of :codigo_inventario,:fabricador_id,:nombre,:nombre_producto,:numero_parte, :message => "Campo Requerido"
+  validates_presence_of :codigo_inventario,:fabricador_id,:nombre,:nombre_producto, :message => "Campo Requerido"
   
-  validates_format_of :nombre, :with => /^[a-zA-Z áéíóúAÉÍÓÚÑñ]*$/, :keypress=>true,:message => "No se aceptan números"
-  validates_format_of :nombre_producto, :with => /^[a-zA-Z áéíóúAÉÍÓÚÑñ]*$/, :keypress=>true,:message => "No se aceptan números"
+  validates_format_of :nombre, :with => /^[a-zA-Z áéíóúAÉÍÓÚÑñ]*$/, :keypress=>true,:message => "No se aceptan números", :allow_blank=>true
+  validates_format_of :nombre_producto, :with => /^[a-zA-Z áéíóúAÉÍÓÚÑñ]*$/, :keypress=>true,:message => "No se aceptan números", :allow_blank=>true
   
-  validates_format_of :numero_parte, :with => /^[0-9]{1,3}$/, :keypress=>true, :message => "No se aceptan letras o numeros negativos"
-  validates_format_of :numero_serial, :with => /^[0-9]{1,3}$/, :keypress=>true, :message => "No se aceptan letras o numeros negativos", :blank=>true
+  validates_format_of :numero_parte, :with => /^[0-9]{1,3}$/, :keypress=>true, :message => "No se aceptan letras o numeros negativos", :allow_blank=>true
+  validates_format_of :numero_serial, :with => /^[0-9]{1,3}$/, :keypress=>true, :message => "No se aceptan letras o numeros negativos", :allow_blank=>true
   
-  validates_length_of :nombre, :maximum => 200, :too_long => "Nombre muy largo"
-  validates_length_of :nombre_producto, :maximum => 500, :too_long => "Nombre muy largo", :blank=>true
+  validates_length_of :nombre, :maximum => 200, :too_long => "Nombre muy largo", :allow_blank=>true
+  validates_length_of :nombre_producto, :maximum => 500, :too_long => "Nombre muy largo", :allow_blank=>true
   
   
 end
