@@ -42,7 +42,7 @@ class Seguridad::RolMenusController < ApplicationController
   # POST /seguridad/rol_menus.json
   def create
     rol_menu = Seguridad::RolMenu.new(params[:seguridad_rol_menu])
-    @seguridad_role = Seguridad::Role.find(rol_id)
+    @seguridad_role = Seguridad::Role.find(rol_menu.rol_id)
 
      respond_to do |format|
       if rol_menu.save

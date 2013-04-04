@@ -23,13 +23,18 @@ SINIHAS::Application.routes.draw do
   get '/incidente/incidentes/report_actividades_estado'
   get '/incidente/incidentes/reportes' 
   
-  get '/incidente/incidentes/rpt_tipo'
-  get '/incidente/incidentes/rpt_tipo_resumen'
-  get '/incidente/incidentes/rpt_estado'
-  get '/incidente/incidentes/rpt_estado_resumen'
-  get '/incidente/incidentes/rpt_actividades_usuario'
-  get '/incidente/incidentes/rpt_actividades_estado'
   
+  match '/roles/agregarmenu' => 'seguridad/roles#agregarmenu', :via => :get
+  
+  get '/incidente/incidentes/report' 
+  match '/report/incidente/SHS_INCI01' => 'incidente/incidentes#rpt_incidente', :via => :get
+  match '/report/incidente/SHS_INCI10' => 'incidente/incidentes#rpt_tipo', :via => :get
+  match '/report/incidente/SHS_INCI11' => 'incidente/incidentes#rpt_tipo_resumen', :via => :get
+  match '/report/incidente/SHS_INCI12' => 'incidente/incidentes#rpt_estado', :via => :get
+  match '/report/incidente/SHS_INCI13' => 'incidente/incidentes#rpt_estado_resumen', :via => :get
+  match '/report/incidente/SHS_INCI14' => 'incidente/incidentes#rpt_actividades_usuario', :via => :get
+  match '/report/incidente/SHS_INCI15' => 'incidente/incidentes#rpt_actividades_estado', :via => :get
+ 
    
   get '/activo/cis/report' 
   get '/peticion/peticion_tis/report' 

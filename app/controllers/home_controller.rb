@@ -30,7 +30,7 @@ class HomeController < ApplicationController
         on m.id = rm.menu_id
         inner join seguridad_permisos p
         on p.role_id = rm.rol_id
-        where m.tipo = 'P' m.modulo_id = #{modulo_id}
+        where m.tipo = 'P' and m.modulo_id = #{modulo_id}
         and p.usuario_id= #{current_usuario.id.to_s}
         order by m.orden"
 

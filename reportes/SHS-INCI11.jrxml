@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SHS-INCI10" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="98c352d1-d224-4614-850f-7af58075a914">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="prtipo" class="java.lang.String"/>
+	<parameter name="prinicio" class="java.lang.String"/>
+	<parameter name="prfin" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select
+tipo_inci.descripcion_corta as tipo_incidente, COUNT(tipo_inci.id) as cantidad
+from incidente_incidentes i
+left join seguridad_usuarios u on u.id = i.informado_por
+left join catalogo_catalogos prio on prio.id = i.prioridad_id
+left join catalogo_catalogos grupo on grupo.id = i.grupo_id
+left join catalogo_catalogos impacto on impacto.id = i.impacto_id
+left join activo_cis ci on ci.id = i.ci_id
+left join incidente_tipo_incidente_categoria_cis tipo_inci on tipo_inci.id = i.tipo_incidente_id
+where
+i.fecha_incidente between convert(date,$P{prinicio},103) and convert(date,$P{prfin},103)
+group by tipo_inci.descripcion_corta]]>
+	</queryString>
+	<field name="tipo_incidente" class="java.lang.String"/>
+	<field name="cantidad" class="java.lang.Integer"/>
+	<title>
+		<band height="108" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="1cdb02c4-a556-4965-997a-80ff95cf0e91" x="4" y="35" width="319" height="20"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Reporte Resumen de Incidentes por tipo.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1cdb02c4-a556-4965-997a-80ff95cf0e91" x="469" y="10" width="100" height="19"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SHS-INCI11]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1cdb02c4-a556-4965-997a-80ff95cf0e91" x="2" y="10" width="297" height="19"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[INSTITUTO NICARAGUENSE DE ENERGIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1cdb02c4-a556-4965-997a-80ff95cf0e91" x="4" y="71" width="89" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha desde:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1cdb02c4-a556-4965-997a-80ff95cf0e91" x="161" y="71" width="82" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha hasta:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="81bdf6b3-858b-4c5e-b507-7d7dea210704" x="91" y="71" width="60" height="20"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$P{prinicio}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1261ece7-5208-4a07-a411-2e8045ad8d79" x="243" y="71" width="59" height="20"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$P{prfin}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="24" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="5673a949-f75f-4e56-a910-6232614c67a0" x="4" y="0" width="462" height="20"/>
+				<box leftPadding="5">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo de Incidente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a24f14f9-5516-42c3-8847-a9d83dd06633" x="466" y="0" width="103" height="20"/>
+				<box leftPadding="5">
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<textField>
+				<reportElement uuid="6f837a1e-e5f9-4737-af5d-bf4addf65482" x="4" y="0" width="462" height="20"/>
+				<box leftPadding="5"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{tipo_incidente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="afcc6fb0-23d0-4396-9e8c-5d9594d23e16" x="469" y="0" width="100" height="20"/>
+				<box leftPadding="5"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="46" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="ef33f564-7bbc-491d-9d56-ca4e1f04ecd1" x="1" y="12" width="58" height="20"/>
+				<textElement/>
+				<text><![CDATA[Versión 1.0]]></text>
+			</staticText>
+			<textField evaluationTime="Report">
+				<reportElement uuid="df2f6dd0-b666-4ee5-84cf-45fe43e96443" x="294" y="12" width="40" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="06cc3786-9d22-474e-8dd6-915ca150f6ec" x="366" y="12" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Fecha de Impresión:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ef33f564-7bbc-491d-9d56-ca4e1f04ecd1" x="75" y="12" width="94" height="20"/>
+				<textElement/>
+				<text><![CDATA[Módulo: Incidentes]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement uuid="c8fea89a-b2e5-4c39-9b28-2bf231a75986" x="466" y="12" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9774dca6-43c8-48bf-bb60-db8438119e2d" x="214" y="12" width="80" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

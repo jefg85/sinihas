@@ -1,4 +1,4 @@
-<form class="form-search" action="report_actividades_usuario">
+<form target="_blank" class="form-search" action="/incidente/incidentes/report_actividades_usuario">
 <div>
   <div class="content-box">
     <div class="content-header">
@@ -19,7 +19,7 @@
      	<select id="usuario" name="usuario" style="width:98%">
 			<option value=""></option>
 			<%@usuarios.each do |i|%>
-			<option value="<%= i.id%>"><%= i.usuario%></option>
+			<option value="<%= i.id%>"><%= (i.nombres + ' ' + i.apellidos)%></option>
 			<%end%>
 		</select>     	
      	</td>

@@ -10,7 +10,7 @@ def rpt_tipo_resumen
 end
 
 def rpt_estado
-	@catalogo_estado = Catalogo::Catalogo.where("tipo_catalogo_id=5")= 
+	@catalogo_estado = Catalogo::Catalogo.where("tipo_catalogo_id=5")
 end
 
 def rpt_estado_resumen
@@ -31,7 +31,7 @@ end
     server.agregar_parametro('prinicio',params[:inicio])
     server.agregar_parametro('prfin',params[:fin])
     report_data = server.getReport('PDF',url)    
-    send_data report_data, :type => server.getContentType('PDF'), :filename => "report_tipo.pdf", :disposition => 'inline'     
+    send_data report_data, :type => server.getContentType('PDF'), :filename => "SHS_INCI10.pdf", :disposition => 'inline'     
   end
   
   def report_tipo_resumen    
@@ -40,7 +40,7 @@ end
     server.agregar_parametro('prinicio',params[:inicio])
     server.agregar_parametro('prfin',params[:fin])
     report_data = server.getReport('PDF',url)    
-    send_data report_data, :type => server.getContentType('PDF'), :filename => "report_tipo_resumen.pdf", :disposition => 'inline'     
+    send_data report_data, :type => server.getContentType('PDF'), :filename => "SHS_INCI11.pdf", :disposition => 'inline'     
   end
   
   def report_estado    
@@ -50,7 +50,7 @@ end
     server.agregar_parametro('prinicio',params[:inicio])
     server.agregar_parametro('prfin',params[:fin])
     report_data = server.getReport('PDF',url)    
-    send_data report_data, :type => server.getContentType('PDF'), :filename => "report_estado.pdf", :disposition => 'inline'     
+    send_data report_data, :type => server.getContentType('PDF'), :filename => "SHS_INCI12.pdf", :disposition => 'inline'     
   end
   
   def report_estado_resumen    
@@ -59,7 +59,7 @@ end
     server.agregar_parametro('prinicio',params[:inicio])
     server.agregar_parametro('prfin',params[:fin])
     report_data = server.getReport('PDF',url)    
-    send_data report_data, :type => server.getContentType('PDF'), :filename => "report_estado_resumen.pdf", :disposition => 'inline'     
+    send_data report_data, :type => server.getContentType('PDF'), :filename => "SHS_INCI13.pdf", :disposition => 'inline'     
   end
     
   def report_actividades_usuario    
@@ -69,7 +69,7 @@ end
     server.agregar_parametro('prinicio',params[:inicio])
     server.agregar_parametro('prfin',params[:fin])
     report_data = server.getReport('PDF',url)    
-    send_data report_data, :type => server.getContentType('PDF'), :filename => "report_actividades_usuario.pdf", :disposition => 'inline'     
+    send_data report_data, :type => server.getContentType('PDF'), :filename => "SHS_INCI14.pdf", :disposition => 'inline'     
   end
  
  def report_actividades_estado    
@@ -79,21 +79,26 @@ end
     server.agregar_parametro('prinicio',params[:inicio])
     server.agregar_parametro('prfin',params[:fin])
     report_data = server.getReport('PDF',url)    
-    send_data report_data, :type => server.getContentType('PDF'), :filename => "report_actividades_estado.pdf", :disposition => 'inline'     
+    send_data report_data, :type => server.getContentType('PDF'), :filename => "SHS_INCI15.pdf", :disposition => 'inline'     
   end
   
   
   def reportes
   
   conn = ActiveRecord::Base.connection
-  @reportes = conn.select_all "select m.* from seguridad_menus m 
-        inner join seguridad_rol_menus rm
-        on m.id = rm.menu_id
-        inner join seguridad_permisos p
-        on p.role_id = rm.rol_id
-        where m.tipo = 'R' m.modulo_id = 5 
-        and p.usuario_id= #{current_usuario.id.to_s}
+  		
+  		@reportes = conn.select_all "select m.* from seguridad_menus m                
+        where m.tipo = 'R' and  m.modulo_id = 4
         order by m.orden"
+        
+        # @reportes = conn.select_all "select m.* from seguridad_menus m 
+        # inner join seguridad_rol_menus rm
+        # on m.id = rm.menu_id
+        #inner join seguridad_permisos p
+        #on p.role_id = rm.rol_id
+        #where m.tipo = 'R' and  m.modulo_id = 4 
+        #and p.usuario_id= #{current_usuario.id.to_s}
+        #order by m.orden"
   
   end
   

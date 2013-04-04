@@ -1,4 +1,4 @@
-<form class="form-search" action="report_tipo">
+<form target="_blank" class="form-search" action="/incidente/incidentes/report_tipo">
 <div>
   <div class="content-box">
     <div class="content-header">
@@ -16,7 +16,7 @@
      	<tr>
      	<td><label>Tipo:</label></td>
      	<td colspan="3">
-     	<select name="estado" style="width:98%">
+     	<select name="tipo" style="width:98%">
 			<option value=""></option>
 			<%@tipo.each do |i|%>
 			<option value="<%= i.id%>"><%= i.descripcion_corta%></option>
