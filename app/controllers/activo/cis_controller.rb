@@ -12,8 +12,71 @@ class Activo::CisController < ApplicationController
   # GET /activo/cis
   # GET /activo/cis.json
   def index
-    @activo_cis = Activo::Ci.all
-
+    squery = ""
+    
+    if !params[:prBuscarCodigo].nil? && !params[:prBuscarCodigo].blank?
+      squery = "codigo_inventario LIKE '%#{params[:prBuscarCodigo]}%'"   
+    end
+    
+    if !params[:prBuscarNombre].nil? && !params[:prBuscarNombre].blank?
+      if !squery.blank?
+        squery = squery + " AND nombre LIKE '%#{params[:prBuscarNombre]}%'"  
+      else
+        squery = "nombre LIKE '%#{params[:prBuscarNombre]}%'"
+      end
+    end
+    
+    if !params[:prBuscarDescripcion].nil? && !params[:prBuscarDescripcion].blank?
+      if !squery.blank?
+        squery = squery + " AND descripcion LIKE '%#{params[:prBuscarDescripcion]}%'"  
+      else
+        squery = "descripcion LIKE '%#{params[:prBuscarDescripcion]}%'"
+      end
+    end
+    
+    if !params[:prBuscarModVer].nil? && !params[:prBuscarModVer].blank?
+      if !squery.blank?
+        squery = squery + " AND modelo_version LIKE '%#{params[:prBuscarModVer]}%'"  
+      else
+        squery = "modelo_version LIKE '%#{params[:prBuscarModVer]}%'"
+      end
+    end
+    
+     if !params[:prBuscarFabricador].nil? && !params[:prBuscarFabricador].blank?
+      if !squery.blank?
+        squery = squery + " AND fabricador_id = #{params[:prBuscarFabricador]}"  
+      else
+        squery = "fabricador_id = #{params[:prBuscarFabricador]}"
+      end
+    end
+    
+    if !params[:prBuscarProveedor].nil? && !params[:prBuscarProveedor].blank?
+      if !squery.blank?
+        squery = squery + " AND proveedor_id = #{params[:prBuscarProveedor]}"  
+      else
+        squery = "proveedor_id = #{params[:prBuscarProveedor]}"
+      end
+    end
+    
+    if !squery.blank?
+      @activo_cis = Activo::Ci.where(squery).page(params[:page]).per(5)
+      @pr_buscar_codigo = params[:prBuscarCodigo]
+      @pr_buscar_nombre = params[:prBuscarNombre]
+      @pr_buscar_descripcion = params[:prBuscarDescripcion] 
+      @pr_buscar_modver = params[:prBuscarModVer]
+      @pr_buscar_fabricador = params[:prBuscarFabricador]
+      @pr_buscar_proveedor = params[:prBuscarProveedor]
+    else
+      @activo_cis = Activo::Ci.page(params[:page]).per(5) 
+      @pr_buscar_codigo = ""
+      @pr_buscar_nombre = ""
+      @pr_buscar_descripcion = "" 
+      @pr_buscar_modver = ""
+      @pr_buscar_fabricador = "" 
+      @pr_buscar_proveedor = ""
+    end
+    load_data
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @activo_cis }

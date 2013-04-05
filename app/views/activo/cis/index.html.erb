@@ -1,46 +1,105 @@
 <div>
-      <div class="content-box">
-        <div class="content-header"><h3>
-        <div class="title-box">
-               Lista de elementos de configuración (CI) 
-        </div>  
-        <div class="btns-box">
-          <button onclick="window.location='/activo/cis/new'">
-                  Agregar
-                </button>    
-                <button onclick="window.open('/activo/cis/report', '_blank');">Reporte</button>                  
-        </div></h3></div>
+	<div class="content-box">
+    	<div class="content-header">
+    		<h3>
+        		<div class="title-box">
+        			<img alt="Ci" src="/assets/icon/ci.png">
+            		Lista de elementos de configuración (CI) 
+        		</div>  
+        		<div class="btns-box">
+          			<button onclick="window.location='/activo/cis/new'">Agregar</button>    
+                	<button onclick="window.open('/activo/cis/report', '_blank');">Reporte</button>                  
+        		</div>
+        	</h3>
+        </div>
         <div class="content">
-          <table class="table">
-          	<thead>
-			<tr>
-		    <th>Código</th>
-		    <th>Nombre</th>
-		    <th>Descripción</th>
-		    <th>Nombre producto</th>
-		    <th>Versión</th>
-		    <th>Fabricador</th>
-		    <th>Proveedor</th>
-		    <th>Acciones</th>		    
-		  </tr>
-		  </thead>
-		
+<table class="table">
+	<thead>
+		<tr>
+			<th style="width: 10%">Código Inv.</th>
+		    <th style="width: 15%">Nombre</th>
+		    <th style="width: 30%">Descripcion</th>
+		    <th style="width: 5%">Mod/Ver</th>
+		    <th style="width: 15%">Fabricador</th>
+		    <th style="width: 15%">Proveedor</th>
+		    <th style="width: 9%">Acc.</th>		    
+		</tr>
+		<tr>
+  			<form class="form-search" action="/activo/cis">
+			<td>
+				<input type="text" id="prBuscarCodigo" name="prBuscarCodigo" class="search-query" placeholder="" size="6"/>	
+			</td>
+			<td>
+				<input type="text" id="prBuscarNombre" name="prBuscarNombre" class="search-query" placeholder="" size="5"/>	
+			</td>
+			<td>
+				<input type="text" id="prBuscarDescripcion" name="prBuscarDescripcion" class="search-query" placeholder="" size="22"/>	
+			</td>
+			<td>
+				<input type="text" id="prBuscarModVer" name="prBuscarModVer" class="search-query" placeholder="" size="4"/>	
+			</td>
+			<td>
+				<select id="prBuscarFabricador" name="prBuscarFabricador" class="search-query" style="width: 130px;">
+					<option value="" selected="true"></option>
+				  <% @fabricador_id.each do |fabricador| %>
+  					<option value="<%= fabricador.id %>"><%= fabricador.nombre_comercial %>"</option>  
+  				  <% end %>					
+				</select>
+			</td>
+			<td>
+				<select id="prBuscarTipoProveedor" name="prBuscarTipoProveedor" class="search-query" style="width: 130px;">
+					<option value="" selected="true"></option>
+				  <% @proveedor_id.each do |proveedor| %>
+  					<option value="<%= proveedor.id %>"><%= proveedor.nombre_comercial %>"</option>  
+  				  <% end %>					
+				</select>
+			</td>
+			<td>
+				<a href="javascript:void(0)" onclick="javascript:fnBuscar()"><img alt="Filtro" src="/assets/icon/filter.png"></a>
+			</td>
+			</form>
+  		</tr>
+	</thead>
+	<tbody>	
 		<% @activo_cis.each do |activo_ci| %>
 		  <tr  class="<%= cycle("even", "odd") %>">
 		    <td><%= activo_ci.codigo_inventario %></td>
 		    <td><%= activo_ci.nombre %></td>
 		    <td><%= activo_ci.descripcion %></td>
-		    <td><%= activo_ci.nombre_producto %></td>
 		    <td><%= activo_ci.modelo_version %></td>
 		    <td><%= activo_ci.fabricador.nombre_comercial %></td>
 		    <td><%= activo_ci.proveedor.nombre_comercial %></td>
-		    <td><%= link_to 'Editar', edit_activo_ci_path(activo_ci) %> |
-		    <%= link_to 'Borrar', activo_ci, method: :delete, data: { confirm: 'Seguro de Eliminar?' } %>
+		    <td>
+		    	<%= link_to image_tag("/assets/icon/edit.png"), edit_activo_ci_path(activo_ci) %> |
+		    	<%= link_to image_tag("/assets/icon/delete.png"), activo_ci, method: :delete, data: { confirm: 'Seguro de Eliminar?' } %>
 		    </td>
 		  </tr>
 		<% end %>
-		</table>
-        </div>
-      </div>
+	</tbody>
+</table>
+<%= paginate @activo_cis %>
 </div>
+</div>
+</div>
+<script type="text/javascript">
+	var doc = $(document); 
+    doc.ready(iniEvento);
+    
+    function iniEvento(){
+    	cargarValor();
+    }
+    
+     function cargarValor(){
+    	$("#prBuscarCodigo").val("<%= @pr_buscar_codigo %>");
+    	$("#prBuscarNombre").val("<%= @pr_buscar_nombre %>");
+    	$("#prBuscarDescripcion").val("<%= @pr_buscar_descripcion %>");
+    	$("#prBuscarModVer").val("<%= @pr_buscar_modver %>");
+    	$("#prBuscarFabricador").val("<%= @pr_buscar_fabricador %>");
+    	$("#prBuscarProveedor").val("<%= @pr_buscar_proveedor %>");
+    }
+    
+	function fnBuscar(){
+		document.forms[0].submit();
+  	}
+</script>
   

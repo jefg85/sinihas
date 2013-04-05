@@ -34,7 +34,7 @@
 				<input type="text" id="prBuscarNombre" name="prBuscarNombre" class="search-query" placeholder="" size="33"/>	
 			</td>
 			<td>
-				<select id="prTipoProveedor" name="prTipoProveedor" class="search-query" style="width: 130px;">
+				<select id="prBuscarTipoProveedor" name="prBuscarTipoProveedor" class="search-query" style="width: 130px;">
 					<option value="" selected="true"></option>
 				  <% @tipo_proveedor_id.each do |tipo_proveedor| %>
   					<option value="<%= tipo_proveedor.id %>"><%= tipo_proveedor.nombre %>"</option>  
@@ -69,6 +69,7 @@
 	  <% end %>
 	</tbody>
 </table>
+<%= paginate @activo_proveedor_cis %>
 </div>
 </div>
 </div>
@@ -98,7 +99,7 @@
     function cargarValor(){
     	$("#prBuscarNit").val("<%= @pr_buscar_nit %>");
     	$("#prBuscarNombre").val("<%= @pr_buscar_nombre %>");
-    	$("#prTipoProveedor").val("<%= @pr_tipo_proveedor %>");
+    	$("#prBuscarTipoProveedor").val("<%= @pr_buscar_tipo_proveedor %>");
     	$("#prBuscarFechaInicioVig").val("<%= @pr_buscar_fecha_inicio_vig %>");
     	$("#prBuscarFechaFinVig").val("<%= @pr_buscar_fecha_fin_vig %>");
     }

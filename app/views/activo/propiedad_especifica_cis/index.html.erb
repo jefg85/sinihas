@@ -35,7 +35,12 @@
 				<input type="text" id="prBuscarNombre" name="prBuscarNombre" class="search-query" placeholder="" size="15"/>	
 			</td>
 			<td>
-				<input type="text" id="prBuscarTipoCampo" name="prBuscarTipoCampo" class="search-query" placeholder="" size="10"/>	
+				<select id="prBuscarTipoCampo" name="prBuscarTipoCampo" class="search-query" style="width: 130px;">
+					<option value="" selected="true"></option>
+				  <% @tipo_campo.each do |tipo_campo_r| %>
+  					<option value="<%= tipo_campo_r.id %>"><%= tipo_campo_r.nombre %>"</option>  
+  				  <% end %>					
+				</select>
 			</td>
 			<td>
 				<input type="text" id="prBuscarValor" name="prBuscarValor" class="search-query" placeholder="" size="10"/>	

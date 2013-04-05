@@ -57,6 +57,14 @@ class Activo::PropiedadEspecificaCisController < ApplicationController
       squery = "nombre_campo LIKE '%#{params[:prBuscarNombre]}%'"
     end
     
+    if !params[:prBuscarTipoCampo].nil? && !params[:prBuscarTipoCampo].blank?
+      if !squery.blank?
+        squery = squery + " AND tipo_campo = #{params[:prBuscarTipoCampo]}"  
+      else
+        squery = "tipo_campo = #{params[:prBuscarTipoCampo]}"
+      end
+    end
+    
     if !params[:prBuscarValor].nil? && !params[:prBuscarValor].blank?
       if !squery.blank?
         squery = squery + " AND valor_string LIKE '%#{params[:prBuscarValor]}%'"  
@@ -105,7 +113,8 @@ class Activo::PropiedadEspecificaCisController < ApplicationController
       @pr_visualizar = ""
       @pr_buscar_fecha_inicio_vig = ""
       @pr_buscar_fecha_fin_vig = ""
-    end 
+    end
+    load_data 
     
     respond_to do |format|
       format.html # index.html.erb

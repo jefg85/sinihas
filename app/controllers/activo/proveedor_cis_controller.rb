@@ -28,11 +28,11 @@ class Activo::ProveedorCisController < ApplicationController
       end
     end
     
-    if !params[:prTipoProveedor].nil? && !params[:prTipoProveedor].blank?
+    if !params[:prBuscarTipoProveedor].nil? && !params[:prBuscarTipoProveedor].blank?
       if !squery.blank?
-        squery = squery + " AND tipo_proveedor_id = #{params[:prTipoProveedor]}"  
+        squery = squery + " AND tipo_proveedor_id = #{params[:prBuscarTipoProveedor]}"  
       else
-        squery = "tipo_proveedor_id = #{params[:prTipoProveedor]}"
+        squery = "tipo_proveedor_id = #{params[:prBuscarTipoProveedor]}"
       end
     end
     
@@ -56,14 +56,14 @@ class Activo::ProveedorCisController < ApplicationController
       @activo_proveedor_cis = Activo::ProveedorCi.where(squery).page(params[:page]).per(5)
       @pr_buscar_nit = params[:prBuscarNit]
       @pr_buscar_nombre = params[:prBuscarNombre]
-      @pr_tipo_proveedor = params[:prTipoProveedor] 
+      @pr_buscar_tipo_proveedor = params[:prBuscarTipoProveedor] 
       @pr_buscar_fecha_inicio_vig = params[:prBuscarFechaInicioVig]
       @pr_buscar_fecha_fin_vig = params[:prBuscarFechaFinVig]
     else
       @activo_proveedor_cis = Activo::ProveedorCi.page(params[:page]).per(5)  
       @pr_buscar_nit = ""
       @pr_buscar_nombre = ""
-      @pr_tipo_proveedor = ""
+      @pr_busar_tipo_proveedor = ""
       @pr_buscar_fecha_inicio_vig = ""
       @pr_buscar_fecha_fin_vig = ""
     end
